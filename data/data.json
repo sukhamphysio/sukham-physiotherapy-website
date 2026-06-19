@@ -1,0 +1,211 @@
+{
+  "clinicInfo": {
+    "name": "Sukham Physiotherapy and Rehab",
+    "tagline": "Movement is Life, Healing is Sukham",
+    "phone": "7447862720",
+    "email": "disha.ranade@gmail.com",
+    "address": "Shop no. 238/239, 2nd floor, D - wing, Thakkar M Square, Near Akashwani Tower, Gangapur Road, Nashik - 422013",
+    "workingHours": "Mon - Sat: 9:00 AM - 1:00 PM, 5:00 PM - 9:00 PM | Sunday: Closed",
+    "mapEmbed": "https://maps.google.com/maps?q=Sukham%20Physiotherapy%20and%20Rehab,%20Gangapur%20Road,%20Nashik&t=&z=16&ie=UTF8&iwloc=&output=embed",
+    "whatsappText": "Hello Sukham Physiotherapy, I would like to book an appointment.",
+    "logoUrl": "assets/logo.jpg",
+    "githubUser": "",
+    "githubRepo": "",
+    "githubToken": ""
+  },
+  "theme": {
+    "primaryColor": "#5D2B7E",
+    "secondaryColor": "#8E44AD",
+    "accentColor": "#1ABC9C",
+    "darkBg": "#0D0B10",
+    "lightBg": "#FCFBFE"
+  },
+  "sections": {
+    "intro": true,
+    "services": true,
+    "facilities": true,
+    "doctors": true,
+    "testimonies": true,
+    "gallery": true,
+    "blogs": true,
+    "contact": true
+  },
+  "hero": {
+    "badgeText": "Welcome to Sukham Physiotherapy",
+    "title": "Restore Your <span>Movement</span> & Reclaim Your Life",
+    "description": "Expert physiotherapy care led by Dr. Disha Viraj Ranade. We specialize in spine rehabilitation, sports injuries, post-operative care, and prenatal/postnatal wellness in a state-of-the-art clinic.",
+    "ctaText": "Book Appointment",
+    "slides": [
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  "services": [
+    {
+      "id": "s1",
+      "title": "MSK (Musculoskeletal) Care",
+      "desc": "Effective diagnosis and rehabilitation for joint pain, muscle strains, arthritis, osteoarthritis, and general stiffness.",
+      "icon": "🦴"
+    },
+    {
+      "id": "s2",
+      "title": "Spine Related Rehabilitation",
+      "desc": "Specialized spine care utilizing our advanced Spinal Decompression Bed for slip disc, sciatica, cervical/lumbar spondylosis.",
+      "icon": "⚡"
+    },
+    {
+      "id": "s3",
+      "title": "Post-Operative Physiotherapy",
+      "desc": "Tailored recovery plans following orthopedic surgeries such as joint replacements (TKR/THR), ACL reconstruction, and fracture fixation.",
+      "icon": "🏥"
+    },
+    {
+      "id": "s4",
+      "title": "Pre-Natal & Post-Natal Fitness",
+      "desc": "Safe exercises and postural training to manage pregnancy pain, strengthen pelvic floor muscles, and facilitate smooth postpartum recovery.",
+      "icon": "🤰"
+    },
+    {
+      "id": "s5",
+      "title": "Geriatric Physiotherapy",
+      "desc": "Gentle exercises focused on improving balance, preventing falls, boosting mobility, and managing osteoporosis/arthritis in elderly patients.",
+      "icon": "🚶‍♂️"
+    },
+    {
+      "id": "s6",
+      "title": "Sports Injury & Fitness",
+      "desc": "Targeted recovery for athletes with sprains, ligament tears, tendonitis, and functional conditioning to ensure a safe return to sport.",
+      "icon": "🏃‍♀️"
+    }
+  ],
+  "facilities": [
+    {
+      "id": "f1",
+      "name": "4D Fully Automatic Spinal Decompression Bed",
+      "category": "Latest Tech",
+      "desc": "Our flagship advanced decompression bed. It utilizes intelligent traction systems to gently relieve spinal pressure, targeting herniated discs, sciatica, and chronic back pain without surgical intervention.",
+      "image": "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "f2",
+      "name": "Rising Yeti Weight Training",
+      "category": "Latest Tech",
+      "desc": "A cutting-edge weight training system specifically customized for physiotherapy rehabilitation. It allows incremental, safe, and guided loading to restore strength and joint stability.",
+      "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "f3",
+      "name": "Traction Bed & Unit",
+      "category": "Equipment",
+      "desc": "Equipped with automated cervical and lumbar traction units to target nerve compressions and spinal stiffness.",
+      "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "f4",
+      "name": "Advanced Electrotherapy Suite",
+      "category": "Electrotherapy",
+      "desc": "Comprehensive pain relief and healing units including Interferential Therapy (IFT), TENS, Therapeutic Ultrasound, Shockwave Therapy, and Laser Therapy.",
+      "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "f5",
+      "name": "Manual & Sports Therapy",
+      "category": "Therapy",
+      "desc": "Specialized clinical interventions including Dry Needling, Cupping Therapy, IASTM (Instrument Assisted Soft Tissue Mobilization), and Kinesiology Taping.",
+      "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80"
+    }
+  ],
+  "doctors": [
+    {
+      "id": "d1",
+      "name": "Dr. Disha Viraj Ranade",
+      "title": "Founder & Chief Physiotherapist",
+      "gender": "Female",
+      "bio": "Dr. Disha Viraj Ranade (PT) is the visionary founder of Sukham Physiotherapy and Rehab. Specializing in advanced Musculoskeletal (MSK), spine decompression therapy, and pre/post-natal care, she has successfully treated hundreds of patients in Nashik, restoring their movement and quality of life with an empathetic, holistic approach.",
+      "image": "assets/logo.jpg",
+      "specialties": [
+        "MSK",
+        "Spine Rehabilitation",
+        "Prenatal / Postnatal Care",
+        "Dry Needling",
+        "IASTM"
+      ],
+      "facebook": "#",
+      "instagram": "#",
+      "linkedin": "#"
+    }
+  ],
+  "testimonies": [
+    {
+      "id": "t1",
+      "name": "Mr. Rajesh Shinde",
+      "condition": "Severe Sciatica & Disc Bulge",
+      "rating": 5,
+      "text": "I was suffering from debilitating sciatica and could barely walk. Dr. Disha suggested decompression therapy on the 4D Automatic Bed. After a few sessions, the pain reduced by 80%. Truly magical treatment and wonderful clinic!",
+      "date": "2026-05-15"
+    },
+    {
+      "id": "t2",
+      "name": "Mrs. Priya Kulkarni",
+      "condition": "Post-Pregnancy Back Pain",
+      "rating": 5,
+      "text": "Highly recommend Dr. Disha for prenatal and post-natal core strengthening. She guided me through safe, targeted exercises that relieved my chronic pregnancy-induced lower back pain completely.",
+      "date": "2026-06-02"
+    },
+    {
+      "id": "t3",
+      "name": "Mr. Amit Verma",
+      "condition": "Post-ACL Reconstruction",
+      "rating": 5,
+      "text": "Recovering from ACL surgery is tough, but the rehabilitation program at Sukham using the Rising Yeti training unit helped me regain full range of motion and strength. Very professional environment.",
+      "date": "2026-06-12"
+    }
+  ],
+  "gallery": [
+    {
+      "id": "g1",
+      "title": "Our Advanced 4D Decompression Bed",
+      "type": "image",
+      "category": "facility",
+      "url": "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=600&q=80",
+      "desc": "A look at our fully automatic spinal decompression bed, key to non-surgical spine treatment."
+    },
+    {
+      "id": "g2",
+      "title": "Dry Needling Session",
+      "type": "image",
+      "category": "treatment",
+      "url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80",
+      "desc": "Specialized dry needling treatment targeted at muscle trigger points."
+    },
+    {
+      "id": "g3",
+      "title": "Clinic Interior",
+      "type": "image",
+      "category": "facility",
+      "url": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80",
+      "desc": "Our clean, hygienic, and welcoming clinic environment."
+    }
+  ],
+  "blogs": [
+    {
+      "id": "b1",
+      "title": "Understanding Spinal Decompression: A Non-Surgical Cure for Back Pain",
+      "date": "June 10, 2026",
+      "author": "Dr. Disha Viraj Ranade",
+      "excerpt": "Learn how the latest 4D Automatic Spinal Decompression Bed works to relieve pressure from compressed spinal nerves and treat sciatica.",
+      "content": "<p>Chronic lower back pain and sciatica are often caused by bulging or herniated discs that pinch sensitive spinal nerves. Traditionally, surgery was the primary option when conservative treatments failed. Today, advanced technologies like the <strong>4D Fully Automatic Spinal Decompression Bed</strong> offer a safe, pain-free alternative.</p><p>Spinal decompression works by gently stretching the spine. This creates a negative pressure (a vacuum effect) within the spinal discs, which helps pull the bulging or herniated disc material back into place. Additionally, this stretching increases blood flow, oxygen, and nutrient-rich fluids into the disc, accelerating natural healing.</p><p>Unlike old traction tables, our 4D Decompression Bed uses sensitive computer-guided sensors that detect muscle resistance. If your body tries to spasm, the table automatically adjusts, ensuring a comfortable and targeted treatment. Sessions typically take 20 to 30 minutes and require no recovery downtime. If you suffer from slip disc, chronic neck/back pain, or leg numbness, this treatment could help you avoid surgery.</p>",
+      "image": "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "b2",
+      "title": "Rehabilitation After Joint Replacement: Why Early Physiotherapy is Key",
+      "date": "June 14, 2026",
+      "author": "Dr. Disha Viraj Ranade",
+      "excerpt": "Undergoing Total Knee or Hip Replacement? Discover why starting structured physiotherapy within 24 hours of surgery guarantees recovery.",
+      "content": "<p>Getting a Total Knee Replacement (TKR) or Total Hip Replacement (THR) is a major step toward restoring pain-free mobility. However, the surgery itself is only half the battle. The ultimate success of joint replacement depends heavily on post-operative physiotherapy.</p><p>Many patients believe they should rest for weeks after surgery. In reality, modern medical guidelines advise starting gentle movement within the first 24 hours! Early mobilization prevents stiffness, reduces swelling, increases blood circulation (preventing dangerous blood clots), and helps retrain muscles surrounding the new joint.</p><p>At Sukham, we design customized progressive exercises. In the early stages, we focus on pain relief, gentle range of motion, and weight-bearing tasks. Later, we introduce advanced conditioning using weight training units like the Rising Yeti. This structured approach helps patients walk independently and resume daily life weeks ahead of schedule.</p>",
+      "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80"
+    }
+  ]
+}
