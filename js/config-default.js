@@ -5,7 +5,7 @@ const DEFAULT_CLINIC_DATA = {
     "tagline": "Movement is Life, Healing is Sukham",
     "phone": "7447862720",
     "email": "disha.ranade@gmail.com",
-    "address": "Shop no. 238/239, 2nd floor, D - wing, Thakkar M Square, Near Akashwani Tower, Gangapur Road, Nashik - 422013",
+    "address": "Shop no. 238/239, 2nd floor, D-Wing, Thakkers M Square, Near Akashwani Tower, Gangapur Road, Purnvad Nagar, Nashik - 422013",
     "workingHours": "Mon - Sat: 9:00 AM - 1:00 PM, 5:00 PM - 9:00 PM | Sunday: Closed",
     "mapEmbed": "https://maps.google.com/maps?q=Sukham%20Physiotherapy%20and%20Rehab,%20Gangapur%20Road,%20Nashik&t=&z=16&ie=UTF8&iwloc=&output=embed",
     "whatsappText": "Hello Sukham Physiotherapy, I would like to book an appointment.",
