@@ -20,6 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cached) {
       return cached.originalUrl;
     }
+    // Fallback to GitHub raw CDN if it's an uploaded asset and we don't have it in local cache
+    if (url.startsWith('assets/uploads/')) {
+      const user = localStorage.getItem('sukham_gh_user') || (clinicData && clinicData.clinicInfo && clinicData.clinicInfo.githubUser);
+      const repo = localStorage.getItem('sukham_gh_repo') || (clinicData && clinicData.clinicInfo && clinicData.clinicInfo.githubRepo);
+      const branch = localStorage.getItem('sukham_gh_branch') || 'main';
+      if (user && repo) {
+        return `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${url}`;
+      }
+    }
     return url;
   }
 
@@ -60,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clinicData = JSON.parse(cachedData);
         console.log('Loaded local unsaved database from browser cache.');
       } else {
-        const response = await fetch('data/data.json');
+        const response = await fetch(`data/data.json?t=${Date.now()}`);
         if (!response.ok) throw new Error('Failed to load JSON');
         clinicData = await response.json();
       }

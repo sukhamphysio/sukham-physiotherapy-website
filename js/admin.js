@@ -55,6 +55,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 2. Dashboard Initialization ---
   async function initDashboard() {
+    // Load upload cache from localStorage to prevent overwriting on save
+    try {
+      const cacheStr = localStorage.getItem('sukham_upload_cache');
+      if (cacheStr) {
+        const parsed = JSON.parse(cacheStr);
+        if (Array.isArray(parsed)) {
+          uploadCache.length = 0;
+          uploadCache.push(...parsed);
+        }
+      }
+    } catch (e) {
+      console.warn('Could not parse upload cache from browser storage', e);
+    }
+
     // Load database
     try {
       // First try localStorage to recover unsaved sessions
@@ -63,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state = JSON.parse(cached);
         setDirty(true);
       } else {
-        const response = await fetch('data/data.json');
+        const response = await fetch(`data/data.json?t=${Date.now()}`);
         if (!response.ok) throw new Error('Not found');
         state = await response.json();
       }
@@ -76,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load GitHub Config from local storage
     loadGithubConfig();
+    detectDefaultBranch(state.clinicInfo.githubUser, state.clinicInfo.githubRepo, state.clinicInfo.githubToken);
 
     // Populate general settings inputs
     populateSettings();
@@ -100,6 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Publish click handler
     publishBtn.addEventListener('click', publishToGithub);
+
+    // Download config click handler
+    document.getElementById('btn-download-config').addEventListener('click', downloadConfigJSON);
   }
 
   // --- 3. Sidebar Tabs ---
@@ -239,13 +257,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cached) {
       return cached.originalUrl;
     }
+    // Fallback to GitHub raw CDN if it's an uploaded asset and we don't have it in local cache
+    if (url.startsWith('assets/uploads/')) {
+      const user = localStorage.getItem('sukham_gh_user') || (state && state.clinicInfo && state.clinicInfo.githubUser);
+      const repo = localStorage.getItem('sukham_gh_repo') || (state && state.clinicInfo && state.clinicInfo.githubRepo);
+      const branch = localStorage.getItem('sukham_gh_branch') || 'main';
+      if (user && repo) {
+        return `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${url}`;
+      }
+    }
     return url;
   }
 
   // --- 6. Local caching and Sync State ---
   function saveLocal() {
-    localStorage.setItem('sukham_clinic_db', JSON.stringify(state));
-    localStorage.setItem('sukham_upload_cache', JSON.stringify(uploadCache));
+    try {
+      localStorage.setItem('sukham_clinic_db', JSON.stringify(state));
+      localStorage.setItem('sukham_upload_cache', JSON.stringify(uploadCache));
+    } catch (e) {
+      console.warn('Local browser storage quota exceeded. Edits are kept in memory and can still be published.', e);
+    }
     setDirty(true);
   }
 
@@ -275,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
     state.clinicInfo.githubToken = token;
   }
 
-  function saveGithubConfig() {
+  async function saveGithubConfig() {
     const user = document.getElementById('github-user').value.trim();
     const repo = document.getElementById('github-repo').value.trim();
     const token = document.getElementById('github-token').value.trim();
@@ -287,6 +318,34 @@ document.addEventListener('DOMContentLoaded', () => {
     state.clinicInfo.githubUser = user;
     state.clinicInfo.githubRepo = repo;
     state.clinicInfo.githubToken = token;
+
+    // Detect and store the default branch for raw CDN fallbacks
+    await detectDefaultBranch(user, repo, token);
+    
+    // Refresh the live preview to load from the correct branch CDN fallback if applicable
+    updatePreview();
+  }
+
+  async function detectDefaultBranch(user, repo, token) {
+    if (!user || !repo) return;
+    try {
+      const headers = {
+        'Accept': 'application/vnd.github.v3+json'
+      };
+      if (token) {
+        headers['Authorization'] = `token ${token}`;
+      }
+      const res = await fetch(`https://api.github.com/repos/${user}/${repo}`, { headers });
+      if (res.ok) {
+        const repoData = await res.json();
+        if (repoData.default_branch) {
+          localStorage.setItem('sukham_gh_branch', repoData.default_branch);
+          console.log(`Detected default branch: ${repoData.default_branch}`);
+        }
+      }
+    } catch (e) {
+      console.warn('Could not detect default branch from GitHub API:', e);
+    }
   }
 
   // Hook changes to repository inputs
@@ -722,38 +781,70 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function processHeroSlideFile(file, statusDiv) {
+  async function processHeroSlideFile(file, statusDiv) {
     if (!file) return;
-    statusDiv.textContent = 'Reading file...';
-    const reader = new FileReader();
+    
+    const relativePath = getCleanUploadPath(file);
+    const existsInState = isPathInState(state, relativePath);
+    const existsInCache = uploadCache.some(item => item.path === relativePath);
 
-    reader.onload = function (event) {
-      const dataUrl = event.target.result;
+    // If already in use, don't re-upload
+    if (existsInState || existsInCache) {
+      if (!state.hero.slides) {
+        state.hero.slides = [];
+      }
+      
+      // If already in slideshow list, avoid adding it twice in the slideshow list itself
+      if (state.hero.slides.includes(relativePath)) {
+        statusDiv.textContent = `Image already in slideshow: ${file.name}`;
+        return;
+      }
+
+      state.hero.slides.push(relativePath);
+      statusDiv.textContent = `Using existing uploaded file: ${file.name}`;
+      saveLocal();
+      renderHeroSlidesList();
+      updatePreview();
+      return;
+    }
+
+    statusDiv.textContent = 'Compressing image...';
+    
+    try {
+      let dataUrl;
+      if (file.type.startsWith('image/')) {
+        dataUrl = await compressImage(file, 1200, 800, 0.75);
+      } else {
+        dataUrl = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = e => resolve(e.target.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
       const base64Content = dataUrl.split(',')[1];
-      const filename = `hero_${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
-      const relativePath = `assets/uploads/${filename}`;
 
       if (!state.hero.slides) {
         state.hero.slides = [];
       }
 
-      // Add to database array
       state.hero.slides.push(relativePath);
 
-      // Add to upload cache for GitHub push
       uploadCache.push({
         path: relativePath,
         content: base64Content,
         originalUrl: dataUrl
       });
 
-      statusDiv.textContent = `File ready: ${file.name}`;
+      statusDiv.textContent = `File ready: ${file.name} (Compressed)`;
       saveLocal();
       renderHeroSlidesList();
       updatePreview();
-    };
-
-    reader.readAsDataURL(file);
+    } catch (err) {
+      console.error(err);
+      statusDiv.textContent = 'Upload failed during processing.';
+    }
   }
 
   function bindUploadZone(zoneId, inputId, targetInputId, statusId) {
@@ -790,39 +881,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function processFile(file, targetInput, statusDiv) {
+  async function processFile(file, targetInput, statusDiv) {
     if (!file) return;
 
-    // Show processing
-    statusDiv.textContent = 'Reading file...';
+    const relativePath = getCleanUploadPath(file);
+    const existsInState = isPathInState(state, relativePath);
+    const existsInCache = uploadCache.some(item => item.path === relativePath);
 
-    const reader = new FileReader();
+    // If already in use, don't re-upload, just use it
+    if (existsInState || existsInCache) {
+      targetInput.value = relativePath;
+      statusDiv.textContent = `Using existing uploaded file: ${file.name}`;
+      targetInput.dispatchEvent(new Event('input'));
+      return;
+    }
 
-    // Store in cache for binary push to GitHub on Save
-    reader.onload = function (event) {
-      const dataUrl = event.target.result;
+    statusDiv.textContent = 'Compressing image...';
+
+    try {
+      let dataUrl;
+      if (file.type.startsWith('image/')) {
+        dataUrl = await compressImage(file, 1200, 800, 0.75);
+      } else {
+        dataUrl = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = e => resolve(e.target.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
       const base64Content = dataUrl.split(',')[1];
-      const filename = `${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
-      const relativePath = `assets/uploads/${filename}`;
 
-      // Insert base64 URL directly into the local editor so the live preview renders immediately!
       targetInput.value = relativePath;
       
-      // Save base64 payload to uploads queue
       uploadCache.push({
         path: relativePath,
         content: base64Content,
         originalUrl: dataUrl
       });
 
-      // Update state temporarily for local review
-      statusDiv.textContent = `File ready: ${file.name}`;
-      
-      // Dispatch a change event
+      statusDiv.textContent = `File ready: ${file.name} (Compressed)`;
       targetInput.dispatchEvent(new Event('input'));
-    };
-
-    reader.readAsDataURL(file);
+    } catch (err) {
+      console.error(err);
+      statusDiv.textContent = 'Upload failed during processing.';
+    }
   }
 
   // --- 11. Modal Forms Submit Handlers ---
@@ -1040,10 +1144,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Step C: Push the updated JSON database file
-      // Remove GitHub config tokens from the public repository json for security!
+      // Keep githubUser, githubRepo, and githubBranch for public CDN fallback but remove token for security
       const exportState = JSON.parse(JSON.stringify(state));
-      exportState.clinicInfo.githubUser = "";
-      exportState.clinicInfo.githubRepo = "";
       exportState.clinicInfo.githubToken = "";
 
       const jsonStr = JSON.stringify(exportState, null, 2);
@@ -1070,8 +1172,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Complete Success
       setDirty(false);
-      localStorage.removeItem('sukham_clinic_db'); // Clear local cache on successful git push
-      localStorage.removeItem('sukham_upload_cache'); // Clear local upload cache
+      // Keep database in localStorage so the local preview website remains active
+      localStorage.removeItem('sukham_upload_cache'); // Clear local upload cache since they are now on GitHub
       alert('Success! Your website updates have been committed to GitHub. GitHub Pages will take 1-2 minutes to redeploy the changes.');
       
     } catch (error) {
@@ -1121,6 +1223,26 @@ document.addEventListener('DOMContentLoaded', () => {
       throw new Error(`File upload failed: ${err.message}`);
     }
   }
+
+  function downloadConfigJSON() {
+    // Create copy of state
+    const exportState = JSON.parse(JSON.stringify(state));
+    // Remove GitHub tokens for safety before file export
+    exportState.clinicInfo.githubUser = "";
+    exportState.clinicInfo.githubRepo = "";
+    exportState.clinicInfo.githubToken = "";
+
+    const jsonStr = JSON.stringify(exportState, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(jsonStr);
+    
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", dataUri);
+    downloadAnchor.setAttribute("download", "data.json");
+    document.body.appendChild(downloadAnchor);
+    
+    downloadAnchor.click();
+    downloadAnchor.remove();
+  }
 });
 
 // Modal Helpers
@@ -1130,4 +1252,64 @@ function openAdminModal(id) {
 
 function closeAdminModal(id) {
   document.getElementById(id).classList.remove('active');
+}
+
+function compressImage(file, maxWidth, maxHeight, quality) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = new Image();
+      img.onload = function() {
+        const canvas = document.createElement('canvas');
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > maxWidth) {
+            height = Math.round((height * maxWidth) / width);
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width = Math.round((width * maxHeight) / height);
+            height = maxHeight;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+
+        const compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+        resolve(compressedDataUrl);
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function getCleanUploadPath(file) {
+  const cleanName = file.name.replace(/\s+/g, '_').replace(/\.[^/.]+$/, "");
+  const ext = file.type.startsWith('image/') ? 'jpg' : file.name.split('.').pop();
+  return `assets/uploads/${cleanName}.${ext}`;
+}
+
+function isPathInState(obj, path) {
+  if (!obj) return false;
+  if (typeof obj === 'string') {
+    return obj === path;
+  }
+  if (typeof obj === 'object') {
+    for (const key in obj) {
+      if (isPathInState(obj[key], path)) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
