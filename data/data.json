@@ -9,8 +9,8 @@
     "mapEmbed": "https://maps.google.com/maps?q=Sukham%20Physiotherapy%20and%20Rehab,%20Gangapur%20Road,%20Nashik&t=&z=16&ie=UTF8&iwloc=&output=embed",
     "whatsappText": "Hello Sukham Physiotherapy, I would like to book an appointment.",
     "logoUrl": "assets/logo.jpg",
-    "githubUser": "",
-    "githubRepo": "",
+    "githubUser": "sukhamphysio",
+    "githubRepo": "sukham-physiotherapy-website",
     "githubToken": ""
   },
   "theme": {
@@ -36,12 +36,12 @@
     "description": "Expert physiotherapy care led by Dr. Disha Viraj Ranade. We specialize in spine rehabilitation, sports injuries, post-operative care, and prenatal/postnatal wellness in a state-of-the-art clinic.",
     "ctaText": "Book Appointment",
     "slides": [
-      "assets/uploads/hero_1781868405060_AAI_1637.JPG",
-      "assets/uploads/hero_1781868410579_AAI_1628.JPG",
-      "assets/uploads/hero_1781868414778_AAI_1692.JPG",
-      "assets/uploads/hero_1781868418921_AAI_1679.JPG",
-      "assets/uploads/hero_1781868422901__FBA9704.JPG",
-      "assets/uploads/hero_1781868426474__FBA9693.JPG"
+      "assets/uploads/AAI_1637.jpg",
+      "assets/uploads/AAI_1628.jpg",
+      "assets/uploads/AAI_1692.jpg",
+      "assets/uploads/A7V02102.jpg",
+      "assets/uploads/AAI_1679.jpg",
+      "assets/uploads/_FBA9704.jpg"
     ]
   },
   "services": [
