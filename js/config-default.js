@@ -1,4 +1,5 @@
-{
+/* Fallback default website database */
+const DEFAULT_CLINIC_DATA = {
   "clinicInfo": {
     "name": "Sukham Physiotherapy and Rehab",
     "tagline": "Movement is Life, Healing is Sukham",
@@ -202,4 +203,11 @@
       "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80"
     }
   ]
+};
+
+// Export to make it available to scripts if loaded as modules, or bind to window
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { DEFAULT_CLINIC_DATA };
+} else {
+  window.DEFAULT_CLINIC_DATA = DEFAULT_CLINIC_DATA;
 }
