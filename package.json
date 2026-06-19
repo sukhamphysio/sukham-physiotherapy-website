@@ -1,0 +1,18 @@
+{
+  "name": "sukham-physiotherapy-website",
+  "version": "1.0.0",
+  "description": "Customizable landing page and serverless admin portal for Sukham Physiotherapy and Rehab",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y http-server -p 3000"
+  },
+  "keywords": [
+    "physiotherapy",
+    "clinic",
+    "website",
+    "cms",
+    "github-pages"
+  ],
+  "author": "Dr. Disha Viraj Ranade",
+  "license": "ISC"
+}
