@@ -167,14 +167,6 @@
   ],
   "gallery": [
     {
-      "id": "g1",
-      "title": "Our Advanced 4D Decompression Bed",
-      "type": "image",
-      "category": "facility",
-      "url": "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=600&q=80",
-      "desc": "A look at our fully automatic spinal decompression bed, key to non-surgical spine treatment."
-    },
-    {
       "id": "g2",
       "title": "Dry Needling Session",
       "type": "image",
@@ -189,6 +181,14 @@
       "category": "facility",
       "url": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80",
       "desc": "Our clean, hygienic, and welcoming clinic environment."
+    },
+    {
+      "id": "g_1781871511976",
+      "title": "Spinal Decompression Bed",
+      "type": "image",
+      "category": "facility",
+      "url": "assets/uploads/_FBA9715.jpg",
+      "desc": ""
     }
   ],
   "blogs": [
