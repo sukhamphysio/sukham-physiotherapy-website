@@ -6,8 +6,8 @@
   <title>Admin Dashboard | Sukham Physiotherapy & Rehab</title>
   
   <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/reset.css?v=1.2">
+  <link rel="stylesheet" href="css/admin.css?v=1.2">
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -189,6 +189,9 @@
                 <label class="admin-label">GitHub Personal Access Token (PAT)</label>
                 <input type="password" id="github-token" class="admin-input" placeholder="ghp_xxxxxxxxxxxxxx">
                 <span class="token-help">Need a token? <a href="https://github.com/settings/tokens/new?scopes=repo" target="_blank">Create a fine-grained or classic token</a> with write repository permissions. Stored only in your browser.</span>
+              </div>
+              <div class="admin-form-group" style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #231C2D; display: flex; gap: 16px;">
+                <button type="button" class="admin-btn admin-btn-secondary" id="btn-download-config"><i class="fa-solid fa-download"></i> Download config (data.json)</button>
               </div>
             </div>
           </div>
@@ -567,7 +570,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/config-default.js"></script>
-  <script src="js/admin.js"></script>
+  <script src="js/config-default.js?v=1.2"></script>
+  <script src="js/admin.js?v=1.2"></script>
 </body>
 </html>
