@@ -87,35 +87,35 @@
       "name": "4D Fully Automatic Spinal Decompression Bed",
       "category": "Latest Tech",
       "desc": "Our flagship advanced decompression bed. It utilizes intelligent traction systems to gently relieve spinal pressure, targeting herniated discs, sciatica, and chronic back pain without surgical intervention.",
-      "image": "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=600&q=80"
+      "image": "assets/uploads/20260622_143208.jpg"
     },
     {
       "id": "f2",
       "name": "Rising Yeti Weight Training",
       "category": "Latest Tech",
       "desc": "A cutting-edge weight training system specifically customized for physiotherapy rehabilitation. It allows incremental, safe, and guided loading to restore strength and joint stability.",
-      "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80"
+      "image": "assets/uploads/20260622_143409.jpg"
     },
     {
       "id": "f3",
       "name": "Traction Bed & Unit",
       "category": "Equipment",
       "desc": "Equipped with automated cervical and lumbar traction units to target nerve compressions and spinal stiffness.",
-      "image": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80"
+      "image": "assets/uploads/20260622_143154.jpg"
     },
     {
       "id": "f4",
       "name": "Advanced Electrotherapy Suite",
       "category": "Electrotherapy",
       "desc": "Comprehensive pain relief and healing units including Interferential Therapy (IFT), TENS, Therapeutic Ultrasound, Shockwave Therapy, and Laser Therapy.",
-      "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80"
+      "image": "assets/uploads/20260622_143454.jpg"
     },
     {
       "id": "f5",
       "name": "Manual & Sports Therapy",
       "category": "Therapy",
       "desc": "Specialized clinical interventions including Dry Needling, Cupping Therapy, IASTM (Instrument Assisted Soft Tissue Mobilization), and Kinesiology Taping.",
-      "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80"
+      "image": "assets/uploads/20260622_143442.jpg"
     }
   ],
   "doctors": [
@@ -170,7 +170,7 @@
       "title": "Our Advanced 4D Decompression Bed",
       "type": "image",
       "category": "facility",
-      "url": "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=600&q=80",
+      "url": "assets/uploads/20260622_143217.jpg",
       "desc": "A look at our fully automatic spinal decompression bed, key to non-surgical spine treatment."
     },
     {
@@ -186,7 +186,7 @@
       "title": "Clinic Interior",
       "type": "image",
       "category": "facility",
-      "url": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80",
+      "url": "assets/uploads/20260622_143446.jpg",
       "desc": "Our clean, hygienic, and welcoming clinic environment."
     }
   ],
@@ -198,7 +198,7 @@
       "author": "Dr. Disha Viraj Ranade",
       "excerpt": "Learn how the latest 4D Automatic Spinal Decompression Bed works to relieve pressure from compressed spinal nerves and treat sciatica.",
       "content": "<p>Chronic lower back pain and sciatica are often caused by bulging or herniated discs that pinch sensitive spinal nerves. Traditionally, surgery was the primary option when conservative treatments failed. Today, advanced technologies like the <strong>4D Fully Automatic Spinal Decompression Bed</strong> offer a safe, pain-free alternative.</p><p>Spinal decompression works by gently stretching the spine. This creates a negative pressure (a vacuum effect) within the spinal discs, which helps pull the bulging or herniated disc material back into place. Additionally, this stretching increases blood flow, oxygen, and nutrient-rich fluids into the disc, accelerating natural healing.</p><p>Unlike old traction tables, our 4D Decompression Bed uses sensitive computer-guided sensors that detect muscle resistance. If your body tries to spasm, the table automatically adjusts, ensuring a comfortable and targeted treatment. Sessions typically take 20 to 30 minutes and require no recovery downtime. If you suffer from slip disc, chronic neck/back pain, or leg numbness, this treatment could help you avoid surgery.</p>",
-      "image": "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=600&q=80"
+      "image": "assets/uploads/20260622_143208.jpg"
     },
     {
       "id": "b2",
