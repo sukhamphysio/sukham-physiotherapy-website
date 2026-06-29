@@ -136,6 +136,18 @@
       "facebook": "#",
       "instagram": "#",
       "linkedin": "#"
+    },
+    {
+      "id": "d_1782738948484",
+      "name": "Dr. Akshada Bhandare",
+      "title": "Junior Physiotherapist",
+      "gender": "Female",
+      "image": "assets/uploads/Dr_Akshada_Bhandare.jpg",
+      "bio": "Dr. Akshada Bhandare is a dedicated and compassionate physiotherapist with a Bachelor of Physiotherapy (BPTh). She has gained valuable clinical experience while working at Kelkar Hospital, where she was involved in the assessment and rehabilitation of patients with musculoskeletal and orthopedic conditions. She is committed to helping patients reduce pain, restore mobility, and improve their overall quality of life through evidence-based physiotherapy.",
+      "specialties": [],
+      "facebook": "#",
+      "instagram": "#",
+      "linkedin": "#"
     }
   ],
   "testimonies": [
@@ -238,19 +250,174 @@
     }
   ],
   "conditions": {
-    "Head & Jaw": ["Headaches", "Neck-related headaches", "Migraine (neck-related management)", "Jaw pain (TMJ)", "Jaw clicking", "Difficulty opening the mouth", "Facial muscle pain"],
-    "Neck": ["Neck pain", "Stiff neck", "Cervical spondylosis", "Cervical disc problems", "Slipped disc in the neck", "Pinched nerve in the neck", "Cervical radiculopathy", "Flat neck (loss of cervical curve)", "Whiplash injury", "Tech neck / Text neck", "Poor posture"],
-    "Shoulder": ["Shoulder pain", "Frozen shoulder", "Rotator cuff injury", "Shoulder impingement", "Shoulder tendonitis", "Shoulder bursitis", "Shoulder instability", "Shoulder dislocation rehabilitation", "Labral injury rehabilitation", "Arthritis of the shoulder", "Collar bone injuries"],
-    "Elbow": ["Tennis elbow", "Golfer's elbow", "Elbow pain", "Elbow stiffness", "Ligament injuries", "Biceps tendon injury", "Triceps tendon injury"],
-    "Wrist & Hand": ["Wrist pain", "Carpal tunnel syndrome", "De Quervain's syndrome", "Trigger finger", "Thumb pain", "Arthritis of the hand", "Hand stiffness", "Finger injuries", "Wrist sprain", "Wrist tendonitis", "Hand fractures (rehabilitation)"],
-    "Upper Back & Chest": ["Upper back pain", "Mid-back pain", "Rounded shoulders", "Rib pain", "Costochondritis", "Muscle spasms", "Thoracic outlet syndrome"],
-    "Lower Back": ["Low back pain", "Slipped disc", "Disc bulge", "Sciatica", "Lumbar spondylosis", "Lumbar canal stenosis", "Facet joint pain", "Sacroiliac (SI) joint pain", "Tailbone pain (Coccydynia)", "Muscle strain", "Postural back pain", "Pregnancy-related back pain", "Post-surgical spine rehabilitation"],
-    "Hip": ["Hip pain", "Hip arthritis", "Hip bursitis", "Gluteal tendinopathy", "Piriformis syndrome", "Snapping hip", "Hip replacement rehabilitation", "Hip muscle weakness"],
-    "Knee": ["Knee pain", "Osteoarthritis", "ACL injury", "PCL injury", "MCL/LCL injury", "Meniscus tear", "Runner's knee", "Jumper's knee", "Patellar tendonitis", "Patellofemoral pain", "IT band syndrome", "Knee stiffness", "Total knee replacement rehabilitation"],
-    "Leg": ["Hamstring strain", "Quadriceps strain", "Calf strain", "Shin splints", "Muscle cramps", "Muscle tears"],
-    "Ankle": ["Ankle pain", "Ankle sprain", "Chronic ankle instability", "Achilles tendonitis", "Achilles tendon rupture rehabilitation", "Ankle stiffness", "Ankle arthritis"],
-    "Foot": ["Heel pain", "Plantar fasciitis", "Flat feet", "High arches", "Bunions", "Corns (pressure-related advice)", "Metatarsalgia", "Foot tendonitis", "Foot arthritis", "Toe injuries"],
-    "Sports Injuries": ["Muscle pulls", "Ligament sprains", "Tendon injuries", "Overuse injuries", "Running injuries", "Gym injuries", "Cricket injuries", "Football injuries", "Badminton injuries", "Return-to-sport rehabilitation"],
-    "General Orthopaedic": ["Arthritis", "Osteoarthritis", "Rheumatoid arthritis", "Osteoporosis", "Joint pain", "Muscle pain", "Tendon pain", "Ligament injuries", "Bursitis", "Tendinitis", "Myofascial pain", "Trigger points", "Repetitive strain injuries (RSI)", "Balance problems due to pain", "Post-fracture rehabilitation", "Post-operative rehabilitation", "Walking difficulties", "Mobility problems", "Age-related joint pain", "Workplace & ergonomic injuries"]
+    "Head & Jaw": [
+      "Headaches",
+      "Neck-related headaches",
+      "Migraine (neck-related management)",
+      "Jaw pain (TMJ)",
+      "Jaw clicking",
+      "Difficulty opening the mouth",
+      "Facial muscle pain"
+    ],
+    "Neck": [
+      "Neck pain",
+      "Stiff neck",
+      "Cervical spondylosis",
+      "Cervical disc problems",
+      "Slipped disc in the neck",
+      "Pinched nerve in the neck",
+      "Cervical radiculopathy",
+      "Flat neck (loss of cervical curve)",
+      "Whiplash injury",
+      "Tech neck / Text neck",
+      "Poor posture"
+    ],
+    "Shoulder": [
+      "Shoulder pain",
+      "Frozen shoulder",
+      "Rotator cuff injury",
+      "Shoulder impingement",
+      "Shoulder tendonitis",
+      "Shoulder bursitis",
+      "Shoulder instability",
+      "Shoulder dislocation rehabilitation",
+      "Labral injury rehabilitation",
+      "Arthritis of the shoulder",
+      "Collar bone injuries"
+    ],
+    "Elbow": [
+      "Tennis elbow",
+      "Golfer's elbow",
+      "Elbow pain",
+      "Elbow stiffness",
+      "Ligament injuries",
+      "Biceps tendon injury",
+      "Triceps tendon injury"
+    ],
+    "Wrist & Hand": [
+      "Wrist pain",
+      "Carpal tunnel syndrome",
+      "De Quervain's syndrome",
+      "Trigger finger",
+      "Thumb pain",
+      "Arthritis of the hand",
+      "Hand stiffness",
+      "Finger injuries",
+      "Wrist sprain",
+      "Wrist tendonitis",
+      "Hand fractures (rehabilitation)"
+    ],
+    "Upper Back & Chest": [
+      "Upper back pain",
+      "Mid-back pain",
+      "Rounded shoulders",
+      "Rib pain",
+      "Costochondritis",
+      "Muscle spasms",
+      "Thoracic outlet syndrome"
+    ],
+    "Lower Back": [
+      "Low back pain",
+      "Slipped disc",
+      "Disc bulge",
+      "Sciatica",
+      "Lumbar spondylosis",
+      "Lumbar canal stenosis",
+      "Facet joint pain",
+      "Sacroiliac (SI) joint pain",
+      "Tailbone pain (Coccydynia)",
+      "Muscle strain",
+      "Postural back pain",
+      "Pregnancy-related back pain",
+      "Post-surgical spine rehabilitation"
+    ],
+    "Hip": [
+      "Hip pain",
+      "Hip arthritis",
+      "Hip bursitis",
+      "Gluteal tendinopathy",
+      "Piriformis syndrome",
+      "Snapping hip",
+      "Hip replacement rehabilitation",
+      "Hip muscle weakness"
+    ],
+    "Knee": [
+      "Knee pain",
+      "Osteoarthritis",
+      "ACL injury",
+      "PCL injury",
+      "MCL/LCL injury",
+      "Meniscus tear",
+      "Runner's knee",
+      "Jumper's knee",
+      "Patellar tendonitis",
+      "Patellofemoral pain",
+      "IT band syndrome",
+      "Knee stiffness",
+      "Total knee replacement rehabilitation"
+    ],
+    "Leg": [
+      "Hamstring strain",
+      "Quadriceps strain",
+      "Calf strain",
+      "Shin splints",
+      "Muscle cramps",
+      "Muscle tears"
+    ],
+    "Ankle": [
+      "Ankle pain",
+      "Ankle sprain",
+      "Chronic ankle instability",
+      "Achilles tendonitis",
+      "Achilles tendon rupture rehabilitation",
+      "Ankle stiffness",
+      "Ankle arthritis"
+    ],
+    "Foot": [
+      "Heel pain",
+      "Plantar fasciitis",
+      "Flat feet",
+      "High arches",
+      "Bunions",
+      "Corns (pressure-related advice)",
+      "Metatarsalgia",
+      "Foot tendonitis",
+      "Foot arthritis",
+      "Toe injuries"
+    ],
+    "Sports Injuries": [
+      "Muscle pulls",
+      "Ligament sprains",
+      "Tendon injuries",
+      "Overuse injuries",
+      "Running injuries",
+      "Gym injuries",
+      "Cricket injuries",
+      "Football injuries",
+      "Badminton injuries",
+      "Return-to-sport rehabilitation"
+    ],
+    "General Orthopaedic": [
+      "Arthritis",
+      "Osteoarthritis",
+      "Rheumatoid arthritis",
+      "Osteoporosis",
+      "Joint pain",
+      "Muscle pain",
+      "Tendon pain",
+      "Ligament injuries",
+      "Bursitis",
+      "Tendinitis",
+      "Myofascial pain",
+      "Trigger points",
+      "Repetitive strain injuries (RSI)",
+      "Balance problems due to pain",
+      "Post-fracture rehabilitation",
+      "Post-operative rehabilitation",
+      "Walking difficulties",
+      "Mobility problems",
+      "Age-related joint pain",
+      "Workplace & ergonomic injuries"
+    ]
   }
 }
