@@ -6,7 +6,7 @@
     "email": "disha.ranade@gmail.com",
     "address": "Shop no. 238/239, 2nd floor, D-Wing, Thakkers M Square, Near Akashwani Tower, Gangapur Road, Purnvad Nagar, Nashik - 422013",
     "workingHours": "Mon - Sat: 10:30 AM - 7:00 PM | Sunday: Closed",
-    "mapEmbed": "https://maps.google.com/maps?q=Sukham%20Physiotherapy%20and%20Rehab,%20Gangapur%20Road,%20Nashik&t=&z=16&ie=UTF8&iwloc=&output=embed",
+    "mapEmbed": "https://maps.google.com/maps?q=2nd%20Floor,%20Sukham%20Physiotherapy%20%26%20Rehab%20%7C%20Dr.Disha%20Ranade%20(PT),%20Gangapur%20Road,%20Nashik&t=&z=16&ie=UTF8&iwloc=&output=embed",
     "whatsappText": "Hello Sukham Physiotherapy, I would like to book an appointment.",
     "logoUrl": "assets/logo.jpg",
     "githubUser": "sukhamphysio",
@@ -124,7 +124,7 @@
       "name": "Dr. Disha Viraj Ranade",
       "title": "Founder & Chief Physiotherapist",
       "gender": "Female",
-      "bio": "Dr. Disha Viraj Ranade (PT) is the visionary founder of Sukham Physiotherapy and Rehab. Specializing in advanced Musculoskeletal (MSK), spine decompression therapy, and pre/post-natal care, she has successfully treated hundreds of patients in Nashik, restoring their movement and quality of life with an empathetic, holistic approach.",
+      "bio": "Dr. Disha Viraj Ranade (PT), BPTh, is the Chief Physiotherapist & Founder of Sukham Physiotherapy and Rehab. She is a registered member of the Indian Association of Physiotherapists (IAP Reg No. 71561) with senior clinical experience at Kelkar Orthopaedic Hospital, Nashik. She specializes in spine decompression, post-operative care, musculoskeletal (MSK) rehab, and home visits. She is a highly certified specialist in Pre/Post-Natal Fitness, Cupping (CMDCT), Dry Needling (CDNT), Kinesio Taping (CKTT), and IASTM.",
       "image": "assets/uploads/file_000000009b107208be9cc41fd9848acc.jpg",
       "specialties": [
         "MSK",
@@ -209,5 +209,48 @@
       "content": "<p>Getting a Total Knee Replacement (TKR) or Total Hip Replacement (THR) is a major step toward restoring pain-free mobility. However, the surgery itself is only half the battle. The ultimate success of joint replacement depends heavily on post-operative physiotherapy.</p><p>Many patients believe they should rest for weeks after surgery. In reality, modern medical guidelines advise starting gentle movement within the first 24 hours! Early mobilization prevents stiffness, reduces swelling, increases blood circulation (preventing dangerous blood clots), and helps retrain muscles surrounding the new joint.</p><p>At Sukham, we design customized progressive exercises. In the early stages, we focus on pain relief, gentle range of motion, and weight-bearing tasks. Later, we introduce advanced conditioning using weight training units like the Rising Yeti. This structured approach helps patients walk independently and resume daily life weeks ahead of schedule.</p>",
       "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80"
     }
-  ]
+  ],
+  "faqs": [
+    {
+      "id": "faq1",
+      "question": "Who is the chief physiotherapist at Sukham Physiotherapy and Rehab?",
+      "answer": "The clinic is founded and led by Dr. Disha Viraj Ranade, a highly certified BPTh physiotherapist and registered member of the Indian Association of Physiotherapists (IAP Reg No. 71561), with extensive clinical experience at Kelkar Orthopaedic Hospital."
+    },
+    {
+      "id": "faq2",
+      "question": "What specialized treatments do you offer at your Gangapur Road clinic?",
+      "answer": "We offer advanced 4D Fully Automatic Spinal Decompression Therapy, Rising Yeti weight training rehabilitation, electrotherapy suites (IFT, TENS, Ultrasound), and specialized manual therapies such as Dry Needling, Cupping, and IASTM."
+    },
+    {
+      "id": "faq3",
+      "question": "Do I need a doctor's prescription or referral to start physiotherapy?",
+      "answer": "No, you do not need a direct referral to start treatment. You can book an appointment directly with us. Dr. Disha Ranade (PT) will conduct a thorough musculoskeletal evaluation and design a customized recovery program for you."
+    },
+    {
+      "id": "faq4",
+      "question": "How does the 4D Spinal Decompression therapy help with back pain or sciatica?",
+      "answer": "Our fully automatic decompression bed uses gentle, computer-controlled traction to decompress the spinal discs. This creates negative pressure that relieves compressed nerves, reduces sciatica, and helps pull bulging discs back into position without surgery."
+    },
+    {
+      "id": "faq5",
+      "question": "What are the clinic timings, and how can I book an appointment?",
+      "answer": "We are open Monday to Saturday from 9:00 AM - 1:00 PM and 5:00 PM - 9:00 PM (Closed on Sundays). You can book a slot directly via our website WhatsApp contact form or by calling us at 7447862720."
+    }
+  ],
+  "conditions": {
+    "Head & Jaw": ["Headaches", "Neck-related headaches", "Migraine (neck-related management)", "Jaw pain (TMJ)", "Jaw clicking", "Difficulty opening the mouth", "Facial muscle pain"],
+    "Neck": ["Neck pain", "Stiff neck", "Cervical spondylosis", "Cervical disc problems", "Slipped disc in the neck", "Pinched nerve in the neck", "Cervical radiculopathy", "Flat neck (loss of cervical curve)", "Whiplash injury", "Tech neck / Text neck", "Poor posture"],
+    "Shoulder": ["Shoulder pain", "Frozen shoulder", "Rotator cuff injury", "Shoulder impingement", "Shoulder tendonitis", "Shoulder bursitis", "Shoulder instability", "Shoulder dislocation rehabilitation", "Labral injury rehabilitation", "Arthritis of the shoulder", "Collar bone injuries"],
+    "Elbow": ["Tennis elbow", "Golfer's elbow", "Elbow pain", "Elbow stiffness", "Ligament injuries", "Biceps tendon injury", "Triceps tendon injury"],
+    "Wrist & Hand": ["Wrist pain", "Carpal tunnel syndrome", "De Quervain's syndrome", "Trigger finger", "Thumb pain", "Arthritis of the hand", "Hand stiffness", "Finger injuries", "Wrist sprain", "Wrist tendonitis", "Hand fractures (rehabilitation)"],
+    "Upper Back & Chest": ["Upper back pain", "Mid-back pain", "Rounded shoulders", "Rib pain", "Costochondritis", "Muscle spasms", "Thoracic outlet syndrome"],
+    "Lower Back": ["Low back pain", "Slipped disc", "Disc bulge", "Sciatica", "Lumbar spondylosis", "Lumbar canal stenosis", "Facet joint pain", "Sacroiliac (SI) joint pain", "Tailbone pain (Coccydynia)", "Muscle strain", "Postural back pain", "Pregnancy-related back pain", "Post-surgical spine rehabilitation"],
+    "Hip": ["Hip pain", "Hip arthritis", "Hip bursitis", "Gluteal tendinopathy", "Piriformis syndrome", "Snapping hip", "Hip replacement rehabilitation", "Hip muscle weakness"],
+    "Knee": ["Knee pain", "Osteoarthritis", "ACL injury", "PCL injury", "MCL/LCL injury", "Meniscus tear", "Runner's knee", "Jumper's knee", "Patellar tendonitis", "Patellofemoral pain", "IT band syndrome", "Knee stiffness", "Total knee replacement rehabilitation"],
+    "Leg": ["Hamstring strain", "Quadriceps strain", "Calf strain", "Shin splints", "Muscle cramps", "Muscle tears"],
+    "Ankle": ["Ankle pain", "Ankle sprain", "Chronic ankle instability", "Achilles tendonitis", "Achilles tendon rupture rehabilitation", "Ankle stiffness", "Ankle arthritis"],
+    "Foot": ["Heel pain", "Plantar fasciitis", "Flat feet", "High arches", "Bunions", "Corns (pressure-related advice)", "Metatarsalgia", "Foot tendonitis", "Foot arthritis", "Toe injuries"],
+    "Sports Injuries": ["Muscle pulls", "Ligament sprains", "Tendon injuries", "Overuse injuries", "Running injuries", "Gym injuries", "Cricket injuries", "Football injuries", "Badminton injuries", "Return-to-sport rehabilitation"],
+    "General Orthopaedic": ["Arthritis", "Osteoarthritis", "Rheumatoid arthritis", "Osteoporosis", "Joint pain", "Muscle pain", "Tendon pain", "Ligament injuries", "Bursitis", "Tendinitis", "Myofascial pain", "Trigger points", "Repetitive strain injuries (RSI)", "Balance problems due to pain", "Post-fracture rehabilitation", "Post-operative rehabilitation", "Walking difficulties", "Mobility problems", "Age-related joint pain", "Workplace & ergonomic injuries"]
+  }
 }
