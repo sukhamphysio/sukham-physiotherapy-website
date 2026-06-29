@@ -1486,6 +1486,7 @@ textarea.form-control {
   .services-grid {
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden; /* Prevent vertical scroll lock on swipe */
     scroll-snap-type: x mandatory;
     padding: 10px 24px 24px 24px;
     gap: 16px;
@@ -1500,6 +1501,7 @@ textarea.form-control {
     width: 280px;
     scroll-snap-align: start;
     padding: 24px 20px;
+    overflow: hidden; /* Prevent inner scroll trapping */
   }
 
   /* Compact Facility Cards */
@@ -1538,6 +1540,7 @@ textarea.form-control {
   .blogs-grid {
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden; /* Prevent vertical scroll lock on swipe */
     scroll-snap-type: x mandatory;
     padding: 10px 24px 24px 24px;
     gap: 16px;
@@ -1551,6 +1554,7 @@ textarea.form-control {
     min-width: 270px;
     width: 270px;
     scroll-snap-align: start;
+    overflow: hidden; /* Prevent inner scroll trapping */
   }
 
   .blog-content {
