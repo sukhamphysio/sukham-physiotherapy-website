@@ -59,6 +59,25 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.reload();
   });
 
+  // Passcode Visibility Toggle
+  const toggleVisibilityBtn = document.getElementById('toggle-passcode-visibility');
+  const toggleIcon = document.getElementById('toggle-passcode-icon');
+
+  if (toggleVisibilityBtn && passcodeField && toggleIcon) {
+    toggleVisibilityBtn.addEventListener('click', () => {
+      const isPassword = passcodeField.type === 'password';
+      passcodeField.type = isPassword ? 'text' : 'password';
+
+      if (isPassword) {
+        toggleIcon.className = 'fa-solid fa-eye';
+        passcodeField.style.letterSpacing = '2px';
+      } else {
+        toggleIcon.className = 'fa-solid fa-eye-slash';
+        passcodeField.style.letterSpacing = '12px';
+      }
+    });
+  }
+
   function checkSessionAuth() {
     if (sessionStorage.getItem('sukham_admin_logged_in') === 'true') {
       loginOverlay.style.display = 'none';
