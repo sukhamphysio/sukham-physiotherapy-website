@@ -51,7 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
       renderTestimonials(clinicData.testimonies);
       renderGallery(clinicData.gallery);
       renderBlogs(clinicData.blogs);
+      renderFAQs(clinicData.faqs);
       renderContactInfo(clinicData.clinicInfo);
+      renderConditions(clinicData.conditions);
       
       // Re-initialize carousels and reveals
       setupCarousels();
@@ -93,7 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTestimonials(clinicData.testimonies);
     renderGallery(clinicData.gallery);
     renderBlogs(clinicData.blogs);
+    renderFAQs(clinicData.faqs);
     renderContactInfo(clinicData.clinicInfo);
+    renderConditions(clinicData.conditions);
 
     // 4. Setup Interactive Handlers
     setupNavigation();
@@ -101,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupCarousels();
     setupGalleryLightbox();
     setupBlogModal(clinicData.blogs);
+    setupConditionsModal();
     setupScrollReveals();
     setupContactForm(clinicData.clinicInfo);
   }
@@ -215,6 +220,20 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       grid.appendChild(card);
     });
+
+    // Mobile swipe-to-end CTA Card (View All Conditions)
+    const viewAllCard = document.createElement('div');
+    viewAllCard.className = 'service-card view-all-card reveal';
+    viewAllCard.style.transitionDelay = `${(services.length % 3) * 0.1}s`;
+    viewAllCard.innerHTML = `
+      <div class="service-icon"><i class="fa-solid fa-notes-medical" style="color: var(--accent-color);"></i></div>
+      <h3 class="service-title">Looking for a specific condition?</h3>
+      <p class="service-desc">We treat over 100+ conditions including TMJ, sciatica, sports injuries, and spinal pain.</p>
+      <button class="btn btn-accent btn-sm" id="btn-view-conditions-mobile" style="margin-top: 15px; width: 100%;">
+        View All Conditions
+      </button>
+    `;
+    grid.appendChild(viewAllCard);
   }
 
   function renderFacilities(facilities) {
@@ -289,6 +308,20 @@ document.addEventListener('DOMContentLoaded', () => {
     track.innerHTML = '';
     dotsContainer.innerHTML = '';
 
+    const getAvatarColor = (name) => {
+      const colors = [
+        '#F44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5',
+        '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50',
+        '#8BC34A', '#CDDC39', '#FFC107', '#FF9800', '#FF5722',
+        '#795548', '#607D8B'
+      ];
+      let hash = 0;
+      for (let i = 0; i < name.length; i++) {
+        hash = name.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      return colors[Math.abs(hash) % colors.length];
+    };
+
     testimonies.forEach((test, idx) => {
       // Create slide
       const slide = document.createElement('div');
@@ -299,12 +332,26 @@ document.addEventListener('DOMContentLoaded', () => {
         stars += `<i class="${i < test.rating ? 'fa-solid' : 'fa-regular'} fa-star"></i>`;
       }
 
+      const initial = test.name ? test.name.trim().charAt(0).toUpperCase() : 'P';
+      const bgColor = getAvatarColor(test.name || 'Patient');
+
       slide.innerHTML = `
-        <p class="testimony-quote">${test.text}</p>
-        <div class="patient-info">
-          <div class="patient-rating">${stars}</div>
-          <span class="patient-name">${test.name}</span>
-          <span class="patient-condition">${test.condition}</span>
+        <div class="testimony-card">
+          <div class="google-review-header">
+            <div class="google-review-avatar" style="background-color: ${bgColor};">
+              ${initial}
+            </div>
+            <div class="google-review-user-info">
+              <h4 class="google-review-name">${test.name}</h4>
+              <div class="google-review-meta">
+                <span class="google-review-badge"><i class="fa-brands fa-google"></i> Verified Google Review</span>
+                ${test.date ? `<span class="google-review-date">• ${test.date}</span>` : ''}
+              </div>
+            </div>
+          </div>
+          <div class="patient-rating" style="margin-bottom: 15px;">${stars}</div>
+          <p class="testimony-quote">${test.text}</p>
+          <span class="patient-condition" style="display: inline-block; margin-top: 10px; font-size:12px; font-weight:700; color:var(--accent-color);">Treated for: ${test.condition}</span>
         </div>
       `;
       track.appendChild(slide);
@@ -384,6 +431,157 @@ document.addEventListener('DOMContentLoaded', () => {
     if (info.mapEmbed) {
       document.getElementById('map-iframe').src = info.mapEmbed;
     }
+  }
+
+  function renderFAQs(faqs) {
+    const container = document.getElementById('faq-accordion');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (!faqs || faqs.length === 0) {
+      const section = document.getElementById('faqs');
+      if (section) section.style.display = 'none';
+      return;
+    } else {
+      const section = document.getElementById('faqs');
+      if (section) section.style.display = '';
+    }
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": []
+    };
+
+    faqs.forEach((faq, index) => {
+      const item = document.createElement('div');
+      item.className = 'faq-item';
+      if (index >= 3) {
+        item.style.display = 'none';
+      }
+      item.innerHTML = `
+        <button class="faq-question" aria-expanded="false">
+          <span>${faq.question}</span>
+          <i class="fa-solid fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>${faq.answer}</p>
+          </div>
+        </div>
+      `;
+      container.appendChild(item);
+
+      schema.mainEntity.push({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      });
+    });
+
+    const questions = container.querySelectorAll('.faq-question');
+    questions.forEach(q => {
+      q.addEventListener('click', () => {
+        const isExpanded = q.getAttribute('aria-expanded') === 'true';
+        questions.forEach(otherQ => {
+          if (otherQ !== q) {
+            otherQ.setAttribute('aria-expanded', 'false');
+            otherQ.nextElementSibling.style.maxHeight = null;
+          }
+        });
+        q.setAttribute('aria-expanded', !isExpanded);
+        const answer = q.nextElementSibling;
+        if (!isExpanded) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+          answer.style.maxHeight = null;
+        }
+      });
+    });
+
+    // Handle View All Button
+    const actionContainer = document.getElementById('faq-action-container');
+    if (actionContainer) {
+      actionContainer.innerHTML = '';
+      if (faqs.length > 3) {
+        actionContainer.innerHTML = `<button class="btn btn-secondary" id="btn-toggle-faqs" style="min-width: 200px;">View All FAQs <i class="fa-solid fa-chevron-down" style="margin-left:8px;"></i></button>`;
+        
+        const toggleBtn = document.getElementById('btn-toggle-faqs');
+        if (toggleBtn) {
+          let expanded = false;
+          toggleBtn.addEventListener('click', () => {
+            expanded = !expanded;
+            const faqItems = container.querySelectorAll('.faq-item');
+            faqItems.forEach((item, index) => {
+              if (index >= 3) {
+                item.style.display = expanded ? 'block' : 'none';
+              }
+            });
+            toggleBtn.innerHTML = expanded ? 
+              'Show Less FAQs <i class="fa-solid fa-chevron-up" style="margin-left:8px;"></i>' : 
+              'View All FAQs <i class="fa-solid fa-chevron-down" style="margin-left:8px;"></i>';
+          });
+        }
+      }
+    }
+
+    let scriptTag = document.getElementById('faq-schema-jsonld');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.id = 'faq-schema-jsonld';
+      scriptTag.type = 'application/ld+json';
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.text = JSON.stringify(schema);
+  }
+
+  function renderConditions(conditions) {
+    const grid = document.getElementById('conditions-modal-grid');
+    if (!grid || !conditions) return;
+    grid.innerHTML = '';
+
+    const getIcon = (cat) => {
+      const key = cat.toLowerCase();
+      if (key.includes('head') || key.includes('jaw')) return 'fa-solid fa-head-side-virus';
+      if (key.includes('neck')) return 'fa-solid fa-user';
+      if (key.includes('shoulder')) return 'fa-solid fa-child-reaching';
+      if (key.includes('elbow')) return 'fa-solid fa-bone';
+      if (key.includes('wrist') || key.includes('hand')) return 'fa-solid fa-hand';
+      if (key.includes('back') || key.includes('chest')) return 'fa-solid fa-align-justify';
+      if (key.includes('hip')) return 'fa-solid fa-person-walking';
+      if (key.includes('knee')) return 'fa-solid fa-person-walking-dashed-line';
+      if (key.includes('leg')) return 'fa-solid fa-person-running';
+      if (key.includes('ankle') || key.includes('foot')) return 'fa-solid fa-shoe-prints';
+      if (key.includes('sports')) return 'fa-solid fa-dumbbell';
+      return 'fa-solid fa-notes-medical';
+    };
+
+    Object.keys(conditions).forEach(cat => {
+      const items = conditions[cat];
+      const card = document.createElement('div');
+      card.className = 'conditions-modal-category';
+      
+      const listHtml = items.map(item => `
+        <li class="conditions-modal-item">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>${item}</span>
+        </li>
+      `).join('');
+
+      card.innerHTML = `
+        <h4 class="conditions-modal-category-title">
+          <i class="${getIcon(cat)}" style="color: var(--accent-color);"></i>
+          <span>${cat}</span>
+        </h4>
+        <ul class="conditions-modal-list">
+          ${listHtml}
+        </ul>
+      `;
+      grid.appendChild(card);
+    });
   }
 
   // --- 4. Interactive Scripts & Event Handlers ---
@@ -615,9 +813,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
       modal.classList.add('active');
       document.body.style.overflow = 'hidden'; // Lock background scrolling
+      
+      // Inject Blog Schema
+      injectBlogSchema(blog);
     });
 
     // Close Blog post
+    const closeModal = () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      
+      // Remove Blog Schema
+      removeBlogSchema();
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  function setupConditionsModal() {
+    const modal = document.getElementById('conditions-modal');
+    const closeBtn = document.getElementById('conditions-modal-close');
+
+    if (!modal) return;
+
+    // Document-level delegation to support dynamically rendered mobile button
+    document.addEventListener('click', (e) => {
+      const openBtn = e.target.closest('#btn-view-conditions, #btn-view-conditions-mobile');
+      if (openBtn) {
+        e.preventDefault();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
     const closeModal = () => {
       modal.classList.remove('active');
       document.body.style.overflow = '';
@@ -627,6 +858,36 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeModal();
     });
+  }
+
+  function injectBlogSchema(blog) {
+    let scriptTag = document.getElementById('blog-post-schema');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.id = 'blog-post-schema';
+      scriptTag.type = 'application/ld+json';
+      document.head.appendChild(scriptTag);
+    }
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": blog.title,
+      "datePublished": blog.date,
+      "author": {
+        "@type": "Person",
+        "name": blog.author || "Dr. Disha Viraj Ranade"
+      },
+      "description": blog.excerpt,
+      "image": getLocalUrl(blog.image)
+    };
+    scriptTag.text = JSON.stringify(schema);
+  }
+
+  function removeBlogSchema() {
+    const scriptTag = document.getElementById('blog-post-schema');
+    if (scriptTag) {
+      scriptTag.remove();
+    }
   }
 
   function setupScrollReveals() {
