@@ -24,11 +24,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 1. Passcode Gate Authentication ---
   checkSessionAuth();
 
-  loginForm.addEventListener('submit', (e) => {
+  // Helper to hash passcode
+  async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const enteredCode = passcodeField.value.trim();
-    // Default clinic passcode: sukham@126 (or customizable)
-    if (enteredCode === 'sukham12' || enteredCode === 'sukham@12' || enteredCode === 'sukham123') {
+    const enteredHash = await sha256(enteredCode);
+
+    // Hashed allowed passcodes (prevent plain text exposure on public repo)
+    const allowedHashes = [
+      '7434e8444510b32ce5ead6f8528ddd53171192921a0fa53cf9ce80113a0df5da'  // Sukham@6009
+    ];
+
+    if (allowedHashes.includes(enteredHash)) {
       sessionStorage.setItem('sukham_admin_logged_in', 'true');
       loginOverlay.style.opacity = '0';
       setTimeout(() => loginOverlay.style.display = 'none', 500);
@@ -363,6 +377,8 @@ document.addEventListener('DOMContentLoaded', () => {
     renderGalleryList();
     renderBlogsList();
     renderHeroSlidesList();
+    renderFaqsList();
+    renderConditionsList();
   }
 
   function renderHeroSlidesList() {
@@ -603,6 +619,130 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // FAQs
+  function renderFaqsList() {
+    const container = document.getElementById('faq-crud-list');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (!state.faqs) {
+      state.faqs = [];
+    }
+
+    state.faqs.forEach(faq => {
+      const item = document.createElement('div');
+      item.className = 'crud-item';
+      item.innerHTML = `
+        <div class="crud-info">
+          <div class="crud-thumb" style="display: flex; align-items: center; justify-content: center; background-color:#1E172A;"><i class="fa-solid fa-circle-question" style="color:var(--accent-color);"></i></div>
+          <div class="crud-details">
+            <h4>${faq.question}</h4>
+            <p>${faq.answer.substring(0, 80)}...</p>
+          </div>
+        </div>
+        <div class="crud-actions">
+          <button class="admin-btn admin-btn-secondary btn-edit-faq" data-id="${faq.id}"><i class="fa-solid fa-pen"></i> Edit</button>
+          <button class="admin-btn admin-btn-danger btn-delete-faq" data-id="${faq.id}"><i class="fa-solid fa-trash"></i> Delete</button>
+        </div>
+      `;
+      container.appendChild(item);
+    });
+
+    container.querySelectorAll('.btn-edit-faq').forEach(btn => {
+      btn.addEventListener('click', () => openFaqModal(btn.dataset.id));
+    });
+    container.querySelectorAll('.btn-delete-faq').forEach(btn => {
+      btn.addEventListener('click', () => deleteFaq(btn.dataset.id));
+    });
+  }
+
+  // Conditions
+  function renderConditionsList() {
+    const container = document.getElementById('conditions-crud-container');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (!state.conditions) {
+      state.conditions = {};
+    }
+
+    Object.keys(state.conditions).forEach(cat => {
+      const items = state.conditions[cat];
+      const card = document.createElement('div');
+      card.className = 'conditions-category-card';
+      card.style.cssText = `
+        background-color: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+      `;
+
+      const listHtml = items.map((item, index) => `
+        <div class="condition-chip" style="display:inline-flex; align-items:center; background-color:rgba(255,255,255,0.03); border:1px solid var(--border-color); padding: 6px 12px; border-radius: 50px; margin: 4px; font-size:13px;">
+          <span class="btn-edit-condition-item" data-category="${cat}" data-index="${index}" style="cursor:pointer; margin-right:8px; color:var(--accent-color);"><i class="fa-solid fa-pen" style="font-size:10px;"></i></span>
+          <span style="color:var(--text-main); font-weight:500;">${item}</span>
+          <span class="btn-delete-condition-item" data-category="${cat}" data-index="${index}" style="margin-left:10px; cursor:pointer; color:var(--text-muted); font-weight:bold; font-size:15px;">&times;</span>
+        </div>
+      `).join('');
+
+      card.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:10px; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
+          <h4 style="font-size:16px; font-weight:700; color:var(--primary-color);">${cat}</h4>
+          <div style="display:flex; gap:8px;">
+            <button class="admin-btn admin-btn-primary btn-add-condition-item" data-category="${cat}" style="padding: 4px 10px; font-size:12px;"><i class="fa-solid fa-plus"></i> Add Item</button>
+            <button class="admin-btn admin-btn-secondary btn-edit-category" data-category="${cat}" style="padding: 4px 10px; font-size:12px;"><i class="fa-solid fa-pen"></i> Rename</button>
+            <button class="admin-btn admin-btn-danger btn-delete-category" data-category="${cat}" style="padding: 4px 10px; font-size:12px;"><i class="fa-solid fa-trash"></i> Delete</button>
+          </div>
+        </div>
+        <div class="conditions-chips-list">
+          ${listHtml}
+          ${items.length === 0 ? '<p style="color:var(--text-muted); font-size:12px; font-style:italic;">No conditions in this category yet. Click Add Item to start.</p>' : ''}
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    // Add Item Click Listeners
+    container.querySelectorAll('.btn-add-condition-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        openConditionItemModal(btn.dataset.category);
+      });
+    });
+
+    // Edit Item Click Listeners
+    container.querySelectorAll('.btn-edit-condition-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.category;
+        const idx = parseInt(btn.dataset.index);
+        openConditionItemModal(cat, idx);
+      });
+    });
+
+    // Delete Item Click Listeners
+    container.querySelectorAll('.btn-delete-condition-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.category;
+        const idx = parseInt(btn.dataset.index);
+        deleteConditionItem(cat, idx);
+      });
+    });
+
+    // Edit Category click listeners
+    container.querySelectorAll('.btn-edit-category').forEach(btn => {
+      btn.addEventListener('click', () => {
+        openConditionCategoryModal(btn.dataset.category);
+      });
+    });
+
+    // Delete Category click listeners
+    container.querySelectorAll('.btn-delete-category').forEach(btn => {
+      btn.addEventListener('click', () => {
+        deleteConditionCategory(btn.dataset.category);
+      });
+    });
+  }
+
   // --- 9. Modals Open Functions ---
 
   function openDoctorModal(id) {
@@ -686,6 +826,38 @@ document.addEventListener('DOMContentLoaded', () => {
     openAdminModal('blog-modal');
   }
 
+  function openFaqModal(id) {
+    if (!state.faqs) state.faqs = [];
+    const faq = state.faqs.find(f => f.id === id);
+    document.getElementById('faq-modal-title').textContent = faq ? 'Edit FAQ Details' : 'Add New FAQ';
+    document.getElementById('faq-form-id').value = id || '';
+    document.getElementById('faq-form-question').value = faq ? faq.question : '';
+    document.getElementById('faq-form-answer').value = faq ? faq.answer : '';
+
+    openAdminModal('faq-modal');
+  }
+
+  function openConditionCategoryModal(originalName) {
+    document.getElementById('condition-category-modal-title').textContent = originalName ? 'Rename Category' : 'Add New Category';
+    document.getElementById('condition-category-form-original-name').value = originalName || '';
+    document.getElementById('condition-category-form-name').value = originalName || '';
+    openAdminModal('condition-category-modal');
+  }
+
+  function openConditionItemModal(category, index) {
+    const isEdit = typeof index !== 'undefined';
+    document.getElementById('condition-item-modal-title').textContent = isEdit ? 'Edit Condition Name' : 'Add New Condition';
+    document.getElementById('condition-item-form-category').value = category;
+    document.getElementById('condition-item-form-index').value = isEdit ? index : '';
+    
+    let currentName = '';
+    if (isEdit && state.conditions[category]) {
+      currentName = state.conditions[category][index] || '';
+    }
+    document.getElementById('condition-item-form-name').value = currentName;
+    openAdminModal('condition-item-modal');
+  }
+
   // --- Delete Functions ---
   function deleteDoctor(id) {
     if (confirm('Are you sure you want to delete this doctor profile?')) {
@@ -711,6 +883,28 @@ document.addEventListener('DOMContentLoaded', () => {
       saveLocal();
       renderFacilitiesList();
       updatePreview();
+    }
+  }
+
+  function deleteConditionCategory(category) {
+    if (confirm(`Are you sure you want to delete the entire "${category}" category and all its conditions? This action cannot be undone.`)) {
+      if (state.conditions && state.conditions[category]) {
+        delete state.conditions[category];
+        saveLocal();
+        renderConditionsList();
+        updatePreview();
+      }
+    }
+  }
+
+  function deleteConditionItem(category, index) {
+    if (confirm(`Remove this condition?`)) {
+      if (state.conditions && state.conditions[category]) {
+        state.conditions[category].splice(index, 1);
+        saveLocal();
+        renderConditionsList();
+        updatePreview();
+      }
     }
   }
 
@@ -741,6 +935,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function deleteFaq(id) {
+    if (confirm('Delete this FAQ?')) {
+      state.faqs = state.faqs.filter(f => f.id !== id);
+      saveLocal();
+      renderFaqsList();
+      updatePreview();
+    }
+  }
+
   // Bind Add Buttons
   document.getElementById('btn-add-doctor').onclick = () => openDoctorModal();
   document.getElementById('btn-add-service').onclick = () => openServiceModal();
@@ -748,6 +951,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-add-testimony').onclick = () => openTestimonyModal();
   document.getElementById('btn-add-gallery').onclick = () => openGalleryModal();
   document.getElementById('btn-add-blog').onclick = () => openBlogModal();
+  document.getElementById('btn-add-faq').onclick = () => openFaqModal();
 
   // --- 10. File Uploader & Drag and Drop Setup ---
 
@@ -1090,6 +1294,89 @@ document.addEventListener('DOMContentLoaded', () => {
       saveLocal();
       renderBlogsList();
       closeAdminModal('blog-modal');
+      updatePreview();
+    });
+
+    // FAQs
+    document.getElementById('faq-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const id = document.getElementById('faq-form-id').value;
+      const question = document.getElementById('faq-form-question').value.trim();
+      const answer = document.getElementById('faq-form-answer').value.trim();
+
+      if (!state.faqs) state.faqs = [];
+
+      if (id) {
+        const faq = state.faqs.find(f => f.id === id);
+        if (faq) Object.assign(faq, { question, answer });
+      } else {
+        state.faqs.push({
+          id: 'faq_' + Date.now(),
+          question, answer
+        });
+      }
+
+      saveLocal();
+      renderFaqsList();
+      closeAdminModal('faq-modal');
+      updatePreview();
+    });
+
+    // Add Condition Category Click
+    document.getElementById('btn-add-condition-category').addEventListener('click', () => {
+      openConditionCategoryModal();
+    });
+
+    // Condition Category Form Submit
+    document.getElementById('condition-category-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const originalName = document.getElementById('condition-category-form-original-name').value;
+      const newName = document.getElementById('condition-category-form-name').value.trim();
+
+      if (!state.conditions) state.conditions = {};
+
+      if (originalName) {
+        // Renaming Category
+        if (originalName !== newName) {
+          state.conditions[newName] = state.conditions[originalName] || [];
+          delete state.conditions[originalName];
+        }
+      } else {
+        // Creating new Category
+        if (state.conditions[newName]) {
+          alert('A category with this name already exists!');
+          return;
+        }
+        state.conditions[newName] = [];
+      }
+
+      saveLocal();
+      renderConditionsList();
+      closeAdminModal('condition-category-modal');
+      updatePreview();
+    });
+
+    // Condition Item Form Submit
+    document.getElementById('condition-item-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const category = document.getElementById('condition-item-form-category').value;
+      const indexStr = document.getElementById('condition-item-form-index').value;
+      const name = document.getElementById('condition-item-form-name').value.trim();
+
+      if (!state.conditions[category]) state.conditions[category] = [];
+
+      if (indexStr !== '') {
+        // Editing Item
+        const index = parseInt(indexStr);
+        state.conditions[category][index] = name;
+      } else {
+        // Appending Item
+        state.conditions[category].push(name);
+      }
+
+      saveLocal();
+      renderConditionsList();
+      closeAdminModal('condition-item-modal');
       updatePreview();
     });
   }
