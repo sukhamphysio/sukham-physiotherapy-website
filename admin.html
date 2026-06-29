@@ -24,8 +24,11 @@
       <h2 class="login-title">Staff Portal</h2>
       <p class="login-sub">Enter clinic passcode to access admin dashboard</p>
       <form id="admin-login-form">
-        <div class="passcode-group">
-          <input type="password" id="admin-passcode" class="passcode-input" maxlength="8" placeholder="••••" required>
+        <div class="passcode-group" style="position: relative;">
+          <input type="password" id="admin-passcode" class="passcode-input" maxlength="20" placeholder="••••" required style="padding-right: 50px;">
+          <span id="toggle-passcode-visibility" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #A39BAE; font-size: 18px; transition: color 0.2s ease;">
+            <i class="fa-solid fa-eye-slash" id="toggle-passcode-icon"></i>
+          </span>
         </div>
         <button type="submit" class="login-btn">Unlock Dashboard</button>
         <div class="login-error" id="login-error">Invalid passcode. Please try again.</div>
