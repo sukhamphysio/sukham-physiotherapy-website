@@ -516,6 +516,10 @@ h1, h2, h3, h4, h5, h6 {
   gap: 12px;
 }
 
+.view-all-card {
+  display: none !important;
+}
+
 /* --- Facilities & Equipments (Carousel/Slider) --- */
 .facility-showcase {
   position: relative;
@@ -735,37 +739,85 @@ h1, h2, h3, h4, h5, h6 {
 .testimony-slide {
   min-width: 100%;
   width: 100%;
-  padding: 0 40px;
-  text-align: center;
+  padding: 15px 10px;
+  box-sizing: border-box;
 }
 
-.testimony-quote {
-  font-size: 20px;
-  font-style: italic;
-  line-height: 1.6;
-  color: var(--text-main);
-  margin-bottom: 30px;
-  position: relative;
+.testimony-card {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  box-sizing: border-box;
+  transition: all var(--transition-normal);
 }
 
-.testimony-quote::before {
-  content: '“';
+.testimony-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-md), 0 10px 30px -10px var(--card-glow);
+}
+
+.google-review-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.google-review-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-display);
-  font-size: 120px;
-  color: var(--primary-color);
-  opacity: 0.08;
-  position: absolute;
-  top: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: -1;
+  font-weight: 700;
+  font-size: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.patient-info {
+.google-review-user-info {
   display: flex;
   flex-direction: column;
+}
+
+.google-review-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.google-review-meta {
+  display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.google-review-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary-color);
+  background-color: rgba(var(--primary-rgb), 0.08);
+  padding: 2px 8px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.google-review-date {
+  font-size: 12px;
+  color: var(--text-muted);
 }
 
 .patient-rating {
@@ -775,15 +827,12 @@ h1, h2, h3, h4, h5, h6 {
   gap: 4px;
 }
 
-.patient-name {
+.testimony-quote {
   font-size: 16px;
-  font-weight: 700;
-}
-
-.patient-condition {
-  font-size: 13px;
-  color: var(--text-muted);
-  font-weight: 600;
+  font-style: normal;
+  line-height: 1.7;
+  color: var(--text-main);
+  margin-bottom: 12px;
 }
 
 .testimony-dots {
@@ -1366,6 +1415,10 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 50px 0;
+  }
+  
   .nav-menu {
     position: fixed;
     top: 80px;
@@ -1395,26 +1448,353 @@ textarea.form-control {
   
   .hero-actions {
     flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-title {
+    font-size: 34px;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    margin-bottom: 24px;
   }
   
+  /* Compact 2x2 Stats Grid */
   .stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: -30px;
+    padding: 0 10px;
+  }
+
+  .stat-card {
+    padding: 16px 12px;
+  }
+
+  .stat-number {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    line-height: 1.3;
   }
   
-  .lightbox {
+  /* Horizontal Scrolling Services on Mobile */
+  .services-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 10px 24px 24px 24px;
+    gap: 16px;
+    margin: 0 -24px;
+    scrollbar-width: none;
+  }
+  .services-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .service-card {
+    min-width: 280px;
+    width: 280px;
+    scroll-snap-align: start;
+    padding: 24px 20px;
+  }
+
+  /* Compact Facility Cards */
+  .facility-card {
+    min-width: 270px;
+    width: 270px;
+  }
+
+  .facility-img-wrapper {
+    height: 170px;
+  }
+
+  .facility-info {
     padding: 20px;
+  }
+
+  .facility-name {
+    font-size: 17px;
+  }
+
+  /* 2-Column Gallery Grid */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .gallery-item {
+    height: 130px;
+  }
+
+  .gallery-item-title {
+    font-size: 12px;
+  }
+
+  /* Horizontal Scrolling Blogs on Mobile */
+  .blogs-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 10px 24px 24px 24px;
+    gap: 16px;
+    margin: 0 -24px;
+    scrollbar-width: none;
+  }
+  .blogs-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .blog-card {
+    min-width: 270px;
+    width: 270px;
+    scroll-snap-align: start;
+  }
+
+  .blog-content {
+    padding: 20px;
+  }
+
+  .blog-title {
+    font-size: 16px;
+  }
+
+  /* Decompression of padding in modals and headers */
+  .lightbox {
+    padding: 15px;
   }
   
   .blog-modal-title {
-    font-size: 24px;
+    font-size: 22px;
   }
   
   .blog-modal-body {
-    padding: 24px;
+    padding: 20px;
   }
   
   .blog-modal-title-wrapper {
     left: 20px;
     right: 20px;
+    bottom: 20px;
+  }
+
+  /* Mobile Swipe Grid view-all card */
+  .services-grid .view-all-card {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.06) 0%, rgba(var(--primary-rgb), 0.01) 100%);
+    border: 1px dashed var(--primary-color) !important;
+  }
+
+  .services-grid .view-all-card .service-title {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+  }
+
+  .services-grid .view-all-card .service-desc {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* Hide the centered static action button on phone */
+  .services-action {
+    display: none !important;
+  }
+}
+
+/* --- FAQ Accordion Section --- */
+.faq-accordion {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-item {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.faq-item:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-md), 0 10px 30px -10px var(--card-glow);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  outline: none;
+}
+
+.faq-question span {
+  padding-right: 20px;
+}
+
+.faq-icon {
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: transform var(--transition-normal);
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+  transform: rotate(180deg);
+  color: var(--primary-color);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer-content {
+  padding: 0 24px 20px 24px;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* --- Conditions Modal Grid Styles --- */
+.conditions-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.conditions-modal-category {
+  background-color: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.conditions-modal-category:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-md);
+}
+
+.conditions-modal-category-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.conditions-modal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.conditions-modal-item {
+  font-size: 14px;
+  color: var(--text-main);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.conditions-modal-item i {
+  color: var(--accent-color);
+  font-size: 12px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* Conditions Modal Header & Body Sections */
+.conditions-modal-header-section {
+  padding: 40px 40px 20px 40px;
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.conditions-modal-header-section h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--primary-color);
+}
+
+.conditions-modal-header-section h2 i {
+  color: var(--accent-color);
+}
+
+.conditions-modal-header-section p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.conditions-modal-body-section {
+  padding: 30px 40px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  .conditions-modal-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Compact mobile conditions modal header section */
+  .conditions-modal-header-section {
+    padding: 24px 20px 12px 20px;
+  }
+
+  .conditions-modal-header-section h2 {
+    font-size: 18px;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .conditions-modal-header-section h2 i {
+    font-size: 16px;
+  }
+
+  .conditions-modal-header-section p {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .conditions-modal-body-section {
+    padding: 16px 20px 24px 20px;
   }
 }
