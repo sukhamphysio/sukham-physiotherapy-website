@@ -51,6 +51,8 @@
       <a href="#" class="sidebar-link" data-target="testimonies-panel"><i class="fa-solid fa-comment-dots"></i> Testimonials</a>
       <a href="#" class="sidebar-link" data-target="gallery-panel"><i class="fa-solid fa-images"></i> Media Gallery</a>
       <a href="#" class="sidebar-link" data-target="blogs-panel"><i class="fa-solid fa-blog"></i> Blog Posts</a>
+      <a href="#" class="sidebar-link" data-target="faqs-panel"><i class="fa-solid fa-circle-question"></i> FAQs</a>
+      <a href="#" class="sidebar-link" data-target="conditions-panel"><i class="fa-solid fa-notes-medical"></i> Conditions Treated</a>
     </nav>
     
     <div class="sidebar-footer">
@@ -276,6 +278,33 @@
           </div>
           <div class="crud-list" id="blog-crud-list">
             <!-- Filled Dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FAQs PANEL ================= -->
+      <section class="admin-panel" id="faqs-panel">
+        <div class="admin-card">
+          <div class="list-actions-bar">
+            <button class="admin-btn admin-btn-primary" id="btn-add-faq"><i class="fa-solid fa-plus"></i> Add New FAQ</button>
+          </div>
+          <div class="crud-list" id="faq-crud-list">
+            <!-- Filled Dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CONDITIONS PANEL ================= -->
+      <section class="admin-panel" id="conditions-panel">
+        <div class="admin-card">
+          <div class="list-actions-bar">
+            <button class="admin-btn admin-btn-primary" id="btn-add-condition-category"><i class="fa-solid fa-plus"></i> Add New Category</button>
+          </div>
+          <div style="margin-top: 20px;">
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Manage the orthopaedic, musculoskeletal, and sports conditions shown in the "View All Conditions" popup catalog on the homepage.</p>
+            <div id="conditions-crud-container" class="conditions-crud-container">
+              <!-- Filled Dynamically with Cards -->
+            </div>
           </div>
         </div>
       </section>
@@ -564,6 +593,74 @@
         <div class="admin-modal-footer">
           <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal('blog-modal')">Cancel</button>
           <button type="submit" class="admin-btn admin-btn-primary">Save Blog Post</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= FAQ MODAL ================= -->
+  <div class="admin-modal" id="faq-modal">
+    <div class="admin-modal-content">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="faq-modal-title">FAQ Details</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('faq-modal')">&times;</span>
+      </div>
+      <form id="faq-form">
+        <input type="hidden" id="faq-form-id">
+        <div class="admin-form-group">
+          <label class="admin-label">Question</label>
+          <input type="text" id="faq-form-question" class="admin-input" placeholder="e.g. Do I need a doctor referral?" required>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Answer</label>
+          <textarea id="faq-form-answer" class="admin-textarea" rows="4" placeholder="Write answer here..." required></textarea>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal('faq-modal')">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary">Save FAQ</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= CONDITION CATEGORY MODAL ================= -->
+  <div class="admin-modal" id="condition-category-modal">
+    <div class="admin-modal-content">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="condition-category-modal-title">Condition Category Details</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('condition-category-modal')">&times;</span>
+      </div>
+      <form id="condition-category-form">
+        <input type="hidden" id="condition-category-form-original-name">
+        <div class="admin-form-group">
+          <label class="admin-label">Category / Body Part Name</label>
+          <input type="text" id="condition-category-form-name" class="admin-input" placeholder="e.g. Lower Back, Neck, Sports Injuries" required>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal('condition-category-modal')">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary">Save Category</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= CONDITION ITEM MODAL ================= -->
+  <div class="admin-modal" id="condition-item-modal">
+    <div class="admin-modal-content">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="condition-item-modal-title">Condition Details</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('condition-item-modal')">&times;</span>
+      </div>
+      <form id="condition-item-form">
+        <input type="hidden" id="condition-item-form-category">
+        <input type="hidden" id="condition-item-form-index">
+        <div class="admin-form-group">
+          <label class="admin-label">Condition Name</label>
+          <input type="text" id="condition-item-form-name" class="admin-input" placeholder="e.g. Sciatica, Tennis elbow, Patellar tendonitis" required>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal('condition-item-modal')">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary">Save Condition</button>
         </div>
       </form>
     </div>

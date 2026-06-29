@@ -24,7 +24,7 @@
     "@type": "Physiotherapy",
     "name": "Sukham Physiotherapy and Rehab",
     "image": "https://raw.githubusercontent.com/sukhamphysio/sukham-physiotherapy-website/main/assets/logo.jpg",
-    "url": "https://disharanade.github.io/sukham-physiotherapy-website/",
+    "url": "https://www.sukhamphysio.in",
     "telephone": "+917447862720",
     "priceRange": "$$",
     "address": {
@@ -56,7 +56,68 @@
     "founder": {
       "@type": "Person",
       "name": "Dr. Disha Viraj Ranade",
-      "jobTitle": "Physiotherapist"
+      "jobTitle": "Physiotherapist",
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Bachelor of Physiotherapy (BPTh)"
+      },
+      "knowsAbout": [
+        "Physiotherapy",
+        "Spine Rehabilitation",
+        "Pre-Natal & Post-Natal Therapy",
+        "Cupping Therapy",
+        "Dry Needling",
+        "Kinesio Taping",
+        "IASTM",
+        "Headache Management",
+        "TMJ Jaw Pain & Clicking",
+        "Cervical Spondylosis",
+        "Neck slipped disc & pinched nerve",
+        "Tech neck & posture correction",
+        "Frozen shoulder & rotator cuff care",
+        "Shoulder impingement & bursitis",
+        "Tennis elbow & Golfer's elbow",
+        "Carpal tunnel syndrome",
+        "De Quervain's syndrome",
+        "Trigger finger",
+        "Upper back & Rib pain (Costochondritis)",
+        "Thoracic outlet syndrome",
+        "Low back slipped disc & disc bulge",
+        "Sciatica nerve pain relief",
+        "Lumbar spondylosis & canal stenosis",
+        "Sacroiliac (SI) joint pain",
+        "Tailbone pain (Coccydynia)",
+        "Pregnancy-related back pain",
+        "Hip arthritis & bursitis",
+        "Piriformis syndrome",
+        "Hip & Knee replacement rehabilitation",
+        "Knee Osteoarthritis",
+        "ACL, PCL, and meniscus tear recovery",
+        "Patellar tendonitis & IT band syndrome",
+        "Shin splints & calf strain",
+        "Ankle sprain & instability",
+        "Achilles tendonitis",
+        "Plantar fasciitis heel pain",
+        "Flat feet & high arches",
+        "Sports injury rehabilitation",
+        "Ergonomic & workplace injuries",
+        "Rheumatoid arthritis care",
+        "Osteoporosis management",
+        "Post-fracture stiffness rehab",
+        "Post-operative joint rehabilitation",
+        "Balance & walking difficulties"
+      ],
+      "publishingPrinciples": "https://www.iapindia.org/",
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Professional License",
+        "name": "Registered Physiotherapist",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Indian Association of Physiotherapists (IAP)"
+        },
+        "value": "IAP Reg No. 71561"
+      }
     }
   }
   </script>
@@ -88,11 +149,11 @@
       <!-- Desktop Navigation Menu -->
       <nav class="nav-menu" id="nav-menu">
         <a href="#home" class="nav-link active">Home</a>
+        <a href="#testimonies" class="nav-link">Testimonials</a>
         <a href="#services" class="nav-link">Treatments</a>
         <a href="#facilities" class="nav-link">Facilities</a>
         <a href="#doctors" class="nav-link">Doctors</a>
         <a href="#gallery" class="nav-link">Gallery</a>
-        <a href="#testimonies" class="nav-link">Testimonials</a>
         <a href="#blogs" class="nav-link">Blogs</a>
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
@@ -157,6 +218,32 @@
     </div>
   </section>
 
+  <!-- Testimonials Section (Google Reviews) -->
+  <section class="section section-alt" id="testimonies">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Google Reviews</span>
+        <h2 class="section-title">What Our Patients Say</h2>
+        <p class="section-desc">We are proud of our 5-star reputation on Google. Read verified reviews from patients who recovered at Sukham.</p>
+      </div>
+      
+      <div class="testimony-slider reveal">
+        <div class="testimony-track" id="testimony-track">
+          <!-- Injected Dynamically -->
+        </div>
+        <div class="testimony-dots" id="testimony-dots">
+          <!-- Injected Dynamically -->
+        </div>
+      </div>
+
+      <div class="google-reviews-action reveal" style="text-align: center; margin-top: 40px;">
+        <a href="https://www.google.com/maps/place/Sukham+Physiotherapy+%26+Rehab/data=!4m2!3m1!1s0x3bddeb7b837053b3:0x1a2ec6d103c83563!18m1!1e1" target="_blank" class="btn btn-secondary">
+          <i class="fa-brands fa-google" style="color: #4285F4; margin-right: 8px;"></i> View All Google Reviews
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Treatments Section -->
   <section class="section" id="services">
     <div class="container">
@@ -167,6 +254,11 @@
       </div>
       <div class="services-grid" id="services-grid">
         <!-- Injected Dynamically -->
+      </div>
+      <div class="services-action reveal" style="text-align: center; margin-top: 50px;">
+        <button class="btn btn-primary" id="btn-view-conditions">
+          <i class="fa-solid fa-notes-medical"></i> View All Treated Conditions
+        </button>
       </div>
     </div>
   </section>
@@ -232,28 +324,8 @@
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section class="section" id="testimonies">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-eyebrow">Patient Stories</span>
-        <h2 class="section-title">Success Testimonials</h2>
-        <p class="section-desc">Here is what our patients say about their experience and recovery journey at Sukham.</p>
-      </div>
-      
-      <div class="testimony-slider reveal">
-        <div class="testimony-track" id="testimony-track">
-          <!-- Injected Dynamically -->
-        </div>
-        <div class="testimony-dots" id="testimony-dots">
-          <!-- Injected Dynamically -->
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Blogs Section -->
-  <section class="section section-alt" id="blogs">
+  <section class="section" id="blogs">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-eyebrow">Knowledge Center</span>
@@ -263,6 +335,21 @@
       <div class="blogs-grid" id="blogs-grid">
         <!-- Injected Dynamically -->
       </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section (AEO & Local SEO) -->
+  <section class="section section-alt" id="faqs">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Common Queries</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">Find answers to common questions about our physiotherapy treatments, clinic timings, and spinal decompression services.</p>
+      </div>
+      <div class="faq-accordion reveal" id="faq-accordion">
+        <!-- Injected Dynamically -->
+      </div>
+      <div id="faq-action-container" style="text-align: center; margin-top: 40px;" class="reveal"></div>
     </div>
   </section>
 
@@ -404,6 +491,22 @@
       </div>
       <div class="blog-modal-body" id="blog-modal-body">
         <!-- Injected Dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Conditions List Modal -->
+  <div class="blog-modal" id="conditions-modal">
+    <div class="blog-modal-content" style="max-width: 900px; height: 85vh; display: flex; flex-direction: column;">
+      <div class="blog-modal-close" id="conditions-modal-close">&times;</div>
+      <div class="conditions-modal-header-section">
+        <h2><i class="fa-solid fa-notes-medical"></i> Complete Conditions We Treat</h2>
+        <p>Find below the complete list of musculoskeletal, orthopaedic, and sports injury conditions we manage at Sukham.</p>
+      </div>
+      <div class="conditions-modal-body-section">
+        <div class="conditions-modal-grid" id="conditions-modal-grid">
+          <!-- Dynamically Injected List of Categories & Items -->
+        </div>
       </div>
     </div>
   </div>
