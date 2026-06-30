@@ -314,6 +314,26 @@
       const container = document.getElementById('profile-container');
       const specsHtml = doc.specialties ? doc.specialties.map(spec => `<span class="profile-spec-tag">${spec}</span>`).join('') : '';
 
+      let credentialsHtml = '';
+      if (doc.credentials && doc.credentials.length > 0) {
+        credentialsHtml = `
+          <div class="profile-bio-card" style="margin-bottom: 0;">
+            <h2 class="profile-section-title"><i class="fa-solid fa-graduation-cap"></i> Professional Credentials</h2>
+            <div class="credentials-grid">
+              ${doc.credentials.map(c => `
+                <div class="credential-item">
+                  <div class="credential-icon"><i class="fa-solid fa-circle-check"></i></div>
+                  <div>
+                    <div class="credential-name">${c.name}</div>
+                    <div class="credential-source">${c.source}</div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
       container.innerHTML = `
         <div class="profile-card-horizontal">
           <div class="profile-image-container">
@@ -339,39 +359,14 @@
           </div>
         </div>
 
-        <div class="profile-bio-card">
+        <div class="profile-bio-card" ${!credentialsHtml ? 'style="margin-bottom:0;"' : ''}>
           <h2 class="profile-section-title"><i class="fa-solid fa-user-doctor"></i> Professional Bio</h2>
           <div class="profile-bio-text">
             <p>${doc.bio}</p>
           </div>
         </div>
 
-        <div class="profile-bio-card" style="margin-bottom: 0;">
-          <h2 class="profile-section-title"><i class="fa-solid fa-graduation-cap"></i> Professional Credentials</h2>
-          <div class="credentials-grid">
-            <div class="credential-item">
-              <div class="credential-icon"><i class="fa-solid fa-circle-check"></i></div>
-              <div>
-                <div class="credential-name">Bachelor of Physiotherapy (BPTh)</div>
-                <div class="credential-source">University Medical Degree Roster</div>
-              </div>
-            </div>
-            <div class="credential-item">
-              <div class="credential-icon"><i class="fa-solid fa-circle-check"></i></div>
-              <div>
-                <div class="credential-name">Registered Physiotherapist Member</div>
-                <div class="credential-source">Indian Association of Physiotherapists (IAP)</div>
-              </div>
-            </div>
-            <div class="credential-item" style="grid-column: span 1;">
-              <div class="credential-icon"><i class="fa-solid fa-certificate"></i></div>
-              <div>
-                <div class="credential-name">Certified Clinical Specialist</div>
-                <div class="credential-source">Dry Needling (CDNT), Cupping (CMDCT), IASTM & Kinesio Taping</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        ${credentialsHtml}
       `;
 
       // Inject JSON-LD Physician/MedicalBusiness Author Schema (for E-E-A-T)
