@@ -211,9 +211,9 @@
           <h4>Sukham Physiotherapy</h4>
           <p>Advanced rehabilitation and customized care designed to restore your movement and wellness. Led by Dr. Disha Viraj Ranade.</p>
           <div class="social-links">
-            <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon" id="footer-facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" id="footer-instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-icon" id="footer-linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
         </div>
         <div class="footer-column">
@@ -351,10 +351,10 @@
                 <i class="fa-brands fa-whatsapp"></i> Book Appointment
               </a>
             </div>
-            <div class="profile-social-links">
-              <a href="${doc.facebook || '#'}" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="${doc.instagram || '#'}" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-              <a href="${doc.linkedin || '#'}" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            <div class="profile-social-links" style="display: ${doc.facebook || doc.instagram || doc.linkedin ? 'flex' : 'none'};">
+              ${doc.facebook ? `<a href="${doc.facebook}" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>` : ''}
+              ${doc.instagram ? `<a href="${doc.instagram}" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>` : ''}
+              ${doc.linkedin ? `<a href="${doc.linkedin}" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>` : ''}
             </div>
           </div>
         </div>
@@ -403,6 +403,16 @@
       scriptTag.type = 'application/ld+json';
       scriptTag.text = JSON.stringify(schema);
       document.head.appendChild(scriptTag);
+
+      // Populate global clinic footer socials dynamically
+      if (state.clinicInfo) {
+        const fb = document.getElementById('footer-facebook');
+        const ig = document.getElementById('footer-instagram');
+        const li = document.getElementById('footer-linkedin');
+        if (fb) { fb.href = state.clinicInfo.facebook || '#'; fb.style.display = state.clinicInfo.facebook ? 'inline-flex' : 'none'; fb.target = '_blank'; }
+        if (ig) { ig.href = state.clinicInfo.instagram || '#'; ig.style.display = state.clinicInfo.instagram ? 'inline-flex' : 'none'; ig.target = '_blank'; }
+        if (li) { li.href = state.clinicInfo.linkedin || '#'; li.style.display = state.clinicInfo.linkedin ? 'inline-flex' : 'none'; li.target = '_blank'; }
+      }
     });
   </script>
 </body>

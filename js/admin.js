@@ -187,6 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('setting-address').value = info.address || '';
     document.getElementById('setting-timing').value = info.workingHours || '';
     document.getElementById('setting-map').value = info.mapEmbed || '';
+    document.getElementById('setting-facebook').value = info.facebook || '';
+    document.getElementById('setting-instagram').value = info.instagram || '';
+    document.getElementById('setting-linkedin').value = info.linkedin || '';
 
     // Hero details
     document.getElementById('setting-hero-badge').value = state.hero.badgeText || '';
