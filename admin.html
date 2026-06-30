@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Sukham Physiotherapy & Rehab</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/reset.css?v=1.2">
+  <link rel="stylesheet" href="css/admin.css?v=1.2">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.jpg">
+</head>
+<body class="admin-body">
+
+  <!-- Passcode Login Overlay -->
+  <div class="admin-login-overlay" id="login-overlay">
+    <div class="login-card">
+      <img src="assets/logo.jpg" alt="Sukham Clinic" class="login-logo" id="login-logo">
+      <h2 class="login-title">Staff Portal</h2>
+      <p class="login-sub">Enter clinic passcode to access admin dashboard</p>
+      <form id="admin-login-form">
+        <div class="passcode-group" style="position: relative;">
+          <input type="password" id="admin-passcode" class="passcode-input" maxlength="20" placeholder="••••" required style="padding-right: 50px;">
+          <span id="toggle-passcode-visibility" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #A39BAE; font-size: 18px; transition: color 0.2s ease; z-index: 10;">
+            <i class="fa-solid fa-eye-slash" id="toggle-passcode-icon"></i>
+          </span>
+        </div>
+        <button type="submit" class="login-btn">Unlock Dashboard</button>
+        <div class="login-error" id="login-error">Invalid passcode. Please try again.</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-header">
+      <img src="assets/logo.jpg" alt="Logo" class="sidebar-logo" id="sidebar-logo">
+      <div class="brand-text">
+        <span class="sidebar-brand-name">Sukham Admin</span>
+        <span class="sidebar-brand-tag">Physiotherapy Portal</span>
+      </div>
+    </div>
+    
+    <nav class="sidebar-menu">
+      <a href="#" class="sidebar-link active" data-target="settings-panel"><i class="fa-solid fa-gear"></i> Settings</a>
+      <a href="#" class="sidebar-link" data-target="doctors-panel"><i class="fa-solid fa-user-doctor"></i> Clinic Team</a>
+      <a href="#" class="sidebar-link" data-target="services-panel"><i class="fa-solid fa-briefcase-medical"></i> Treatments</a>
+      <a href="#" class="sidebar-link" data-target="facilities-panel"><i class="fa-solid fa-hospital-user"></i> Tech & Equipments</a>
+      <a href="#" class="sidebar-link" data-target="testimonies-panel"><i class="fa-solid fa-comment-dots"></i> Testimonials</a>
+      <a href="#" class="sidebar-link" data-target="gallery-panel"><i class="fa-solid fa-images"></i> Media Gallery</a>
+      <a href="#" class="sidebar-link" data-target="blogs-panel"><i class="fa-solid fa-blog"></i> Blog Posts</a>
+      <a href="#" class="sidebar-link" data-target="faqs-panel"><i class="fa-solid fa-circle-question"></i> FAQs</a>
+      <a href="#" class="sidebar-link" data-target="conditions-panel"><i class="fa-solid fa-notes-medical"></i> Conditions Treated</a>
+    </nav>
+    
+    <div class="sidebar-footer">
+      <button class="logout-btn" id="admin-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </aside>
+
+  <!-- Admin Main Content -->
+  <main class="admin-main">
+    <header class="admin-navbar">
+      <div class="nav-title" id="admin-page-title">General Settings</div>
+      <div class="sync-status">
+        <div class="status-indicator">
+          <span class="status-dot synced" id="sync-dot"></span>
+          <span id="sync-text">Synced with Server</span>
+        </div>
+        <button class="publish-btn" id="btn-publish"><i class="fa-solid fa-cloud-arrow-up"></i> Publish to Github</button>
+      </div>
+    </header>
+
+    <div class="admin-content-area">
+
+      <!-- ================= SETTINGS PANEL ================= -->
+      <section class="admin-panel active" id="settings-panel">
+        <div class="layout-split">
+          
+          <!-- Editor Form -->
+          <div class="form-container">
+            <div class="admin-card">
+              <h3 class="card-title">Clinic Information</h3>
+              <div class="admin-form-group">
+                <label class="admin-label">Clinic Name</label>
+                <input type="text" id="setting-name" class="admin-input" required>
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Tagline</label>
+                <input type="text" id="setting-tagline" class="admin-input">
+              </div>
+              <div class="admin-grid-2">
+                <div class="admin-form-group">
+                  <label class="admin-label">Mobile Number</label>
+                  <input type="text" id="setting-phone" class="admin-input" required>
+                </div>
+                <div class="admin-form-group">
+                  <label class="admin-label">Email Address</label>
+                  <input type="email" id="setting-email" class="admin-input">
+                </div>
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Address</label>
+                <input type="text" id="setting-address" class="admin-input" required>
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Clinic Timing / Working Hours</label>
+                <input type="text" id="setting-timing" class="admin-input" required>
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Google Maps Embed Link (output=embed)</label>
+                <input type="text" id="setting-map" class="admin-input">
+              </div>
+            </div>
+
+            <div class="admin-card">
+              <h3 class="card-title">Hero Banner Content</h3>
+              <div class="admin-form-group">
+                <label class="admin-label">Hero Badge Text</label>
+                <input type="text" id="setting-hero-badge" class="admin-input">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Hero Title (Use &lt;span&gt;Word&lt;/span&gt; for color gradient)</label>
+                <input type="text" id="setting-hero-title" class="admin-input">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Hero Description</label>
+                <textarea id="setting-hero-desc" class="admin-textarea"></textarea>
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Slideshow Images</label>
+                <div id="hero-slides-list" class="crud-list" style="margin-bottom:15px;">
+                  <!-- Dynamically populated list of slide images with Delete button -->
+                </div>
+                
+                <!-- Upload button for new Hero Slide -->
+                <div class="upload-zone" id="hero-slide-upload-zone" style="padding:20px;">
+                  <i class="fa-solid fa-image upload-icon" style="font-size:20px; margin-bottom:6px;"></i>
+                  <p class="upload-text" style="font-size:12px;">Drop image or click to <span>add a hero slideshow image</span></p>
+                  <input type="file" id="hero-slide-file-input" style="display:none;" accept="image/*">
+                </div>
+                <div id="hero-slide-upload-status" style="font-size:12px; color:#1ABC9C; text-align:center;"></div>
+              </div>
+            </div>
+
+            <div class="admin-card">
+              <h3 class="card-title">Aesthetic Colors</h3>
+              <div class="admin-grid-2">
+                <div class="admin-form-group">
+                  <label class="admin-label">Primary Color</label>
+                  <div class="color-picker-wrapper">
+                    <input type="color" id="color-primary" class="admin-input-color">
+                    <input type="text" id="color-primary-hex" class="admin-input" style="width: 100px;">
+                  </div>
+                </div>
+                <div class="admin-form-group">
+                  <label class="admin-label">Secondary Color</label>
+                  <div class="color-picker-wrapper">
+                    <input type="color" id="color-secondary" class="admin-input-color">
+                    <input type="text" id="color-secondary-hex" class="admin-input" style="width: 100px;">
+                  </div>
+                </div>
+                <div class="admin-form-group">
+                  <label class="admin-label">Accent Color (Wellness)</label>
+                  <div class="color-picker-wrapper">
+                    <input type="color" id="color-accent" class="admin-input-color">
+                    <input type="text" id="color-accent-hex" class="admin-input" style="width: 100px;">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="admin-card">
+              <h3 class="card-title">GitHub Pages Deployment Settings</h3>
+              <p style="font-size: 13px; color: #A39BAE; margin-bottom: 20px; line-height: 1.5;">
+                Configure your repository metadata to save edits directly to your GitHub Pages website.
+              </p>
+              <div class="admin-grid-2">
+                <div class="admin-form-group">
+                  <label class="admin-label">GitHub Username / Owner</label>
+                  <input type="text" id="github-user" class="admin-input" placeholder="e.g. sukhamphysio">
+                </div>
+                <div class="admin-form-group">
+                  <label class="admin-label">GitHub Repository Name</label>
+                  <input type="text" id="github-repo" class="admin-input" placeholder="e.g. sukham-physiotherapy">
+                </div>
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">GitHub Personal Access Token (PAT)</label>
+                <input type="password" id="github-token" class="admin-input" placeholder="ghp_xxxxxxxxxxxxxx">
+                <span class="token-help">Need a token? <a href="https://github.com/settings/tokens/new?scopes=repo" target="_blank">Create a fine-grained or classic token</a> with write repository permissions. Stored only in your browser.</span>
+              </div>
+              <div class="admin-form-group" style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #231C2D; display: flex; gap: 16px;">
+                <button type="button" class="admin-btn admin-btn-secondary" id="btn-download-config"><i class="fa-solid fa-download"></i> Download config (data.json)</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview Pane -->
+          <div class="preview-container">
+            <div class="preview-header">
+              <span>LIVE LAYOUT PREVIEW</span>
+              <button class="admin-btn admin-btn-secondary" style="padding: 4px 10px; font-size:11px;" id="btn-refresh-preview"><i class="fa-solid fa-rotate"></i> Refresh</button>
+            </div>
+            <iframe id="preview-frame" class="preview-frame" src="index.html"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= DOCTORS PANEL ================= -->
+      <section class="admin-panel" id="doctors-panel">
+        <div class="admin-card">
+          <div class="list-actions-bar">
+            <button class="admin-btn admin-btn-primary" id="btn-add-doctor"><i class="fa-solid fa-plus"></i> Add Team Member</button>
+          </div>
+          <div class="crud-list" id="doctor-crud-list">
+            <!-- Filled Dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SERVICES PANEL ================= -->
+      <section class="admin-panel" id="services-panel">
+        <div class="admin-card">
+          <div class="list-actions-bar">
+            <button class="admin-btn admin-btn-primary" id="btn-add-service"><i class="fa-solid fa-plus"></i> Add Treatment Card</button>
+          </div>
+          <div class="crud-list" id="service-crud-list">
+            <!-- Filled Dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FACILITIES PANEL ================= -->
+      <section class="admin-panel" id="facilities-panel">
+        <div class="admin-card">
+          <div class="list-actions-bar">
+            <button class="admin-btn admin-btn-primary" id="btn-add-facility"><i class="fa-solid fa-plus"></i> Add Facility / Equipment</button>
+          </div>
+          <div class="crud-list" id="facility-crud-list">
+            <!-- Filled Dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TESTIMONIES PANEL ================= -->
+      <section class="admin-panel" id="testimonies-panel">
+        <div class="admin-card">
+          <div class="list-actions-bar">
+            <button class="admin-btn admin-btn-primary" id="btn-add-testimony"><i class="fa-solid fa-plus"></i> Add Testimonial</button>
+          </div>
+          <div class="crud-list" id="testimony-crud-list">
+            <!-- Filled Dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= GALLERY PANEL ================= -->
+      <section class="admin-panel" id="gallery-panel">
+        <div class="admin-card">
+          <div class="list-actions-bar">
+            <button class="admin-btn admin-btn-primary" id="btn-add-gallery"><i class="fa-solid fa-plus"></i> Add Photo / Video</button>
+          </div>
+          
+          <div class="crud-list" id="gallery-crud-list">
+            <!-- Filled Dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= BLOGS PANEL ================= -->
+      <section class="admin-panel" id="blogs-panel">
+        <div class="admin-card">
+          <div class="list-actions-bar">
+            <button class="admin-btn admin-btn-primary" id="btn-add-blog"><i class="fa-solid fa-pencil"></i> Write New Blog Post</button>
+          </div>
+          <div class="crud-list" id="blog-crud-list">
+            <!-- Filled Dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FAQs PANEL ================= -->
+      <section class="admin-panel" id="faqs-panel">
+        <div class="admin-card">
+          <div class="list-actions-bar">
+            <button class="admin-btn admin-btn-primary" id="btn-add-faq"><i class="fa-solid fa-plus"></i> Add New FAQ</button>
+          </div>
+          <div class="crud-list" id="faq-crud-list">
+            <!-- Filled Dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CONDITIONS PANEL ================= -->
+      <section class="admin-panel" id="conditions-panel">
+        <div class="admin-card">
+          <div class="list-actions-bar">
+            <button class="admin-btn admin-btn-primary" id="btn-add-condition-category"><i class="fa-solid fa-plus"></i> Add New Category</button>
+          </div>
+          <div style="margin-top: 20px;">
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Manage the orthopaedic, musculoskeletal, and sports conditions shown in the "View All Conditions" popup catalog on the homepage.</p>
+            <div id="conditions-crud-container" class="conditions-crud-container">
+              <!-- Filled Dynamically with Cards -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================= DOCTOR MODAL ================= -->
+  <div class="admin-modal" id="doctor-modal">
+    <div class="admin-modal-content">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="doctor-modal-title">Team Member Details</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('doctor-modal')">&times;</span>
+      </div>
+      <form id="doctor-form">
+        <input type="hidden" id="doctor-form-id">
+        <div class="admin-form-group">
+          <label class="admin-label">Team Category</label>
+          <select id="doctor-form-category" class="admin-select">
+            <option value="medical">Medical Team (Doctors, Therapists)</option>
+            <option value="support">Support Team (Outreach, Marketing, Social Media)</option>
+          </select>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Name</label>
+          <input type="text" id="doctor-form-name" class="admin-input" required>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Designation / Title</label>
+          <input type="text" id="doctor-form-title" class="admin-input" placeholder="e.g. Hired Consultant Physiotherapist" required>
+        </div>
+        <div class="admin-grid-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Gender</label>
+            <select id="doctor-form-gender" class="admin-select">
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+            </select>
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Photo / Image URL</label>
+            <input type="text" id="doctor-form-img" class="admin-input" placeholder="assets/photo.jpg">
+          </div>
+        </div>
+        
+        <!-- File upload box for Doctor Image -->
+        <div class="upload-zone" id="doctor-img-upload-zone">
+          <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+          <p class="upload-text">Drag & drop doctor photo here or <span>browse files</span></p>
+          <input type="file" id="doctor-img-file-input" style="display:none;" accept="image/*">
+        </div>
+        <div id="doctor-img-upload-status" style="font-size:12px; color:#1ABC9C; text-align:center; margin-bottom:12px;"></div>
+
+        <div class="admin-form-group">
+          <label class="admin-label">Short Biography</label>
+          <textarea id="doctor-form-bio" class="admin-textarea" required></textarea>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Specialties (comma-separated list)</label>
+          <input type="text" id="doctor-form-specs" class="admin-input" placeholder="e.g. Spine care, Sports rehab, Dry needling">
+        </div>
+        <div class="admin-grid-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Facebook Profile Link</label>
+            <input type="text" id="doctor-form-fb" class="admin-input" value="#">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Instagram Profile Link</label>
+            <input type="text" id="doctor-form-insta" class="admin-input" value="#">
+          </div>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal('doctor-modal')">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary">Save Team Member</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= SERVICE MODAL ================= -->
+  <div class="admin-modal" id="service-modal">
+    <div class="admin-modal-content">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="service-modal-title">Treatment Details</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('service-modal')">&times;</span>
+      </div>
+      <form id="service-form">
+        <input type="hidden" id="service-form-id">
+        <div class="admin-form-group">
+          <label class="admin-label">Treatment Title</label>
+          <input type="text" id="service-form-title" class="admin-input" required>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Emoji Icon</label>
+          <input type="text" id="service-form-icon" class="admin-input" placeholder="e.g. 🦴, ⚡, 🏥, 🚶‍♂️" required>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Description</label>
+          <textarea id="service-form-desc" class="admin-textarea" required></textarea>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Detailed Description (for treatment.html page)</label>
+          <textarea id="service-form-details" class="admin-textarea" rows="5" placeholder="Write detailed clinical recovery information here..." required></textarea>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal('service-modal')">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary">Save Treatment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= FACILITY MODAL ================= -->
+  <div class="admin-modal" id="facility-modal">
+    <div class="admin-modal-content">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="facility-modal-title">Facility Details</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('facility-modal')">&times;</span>
+      </div>
+      <form id="facility-form">
+        <input type="hidden" id="facility-form-id">
+        <div class="admin-form-group">
+          <label class="admin-label">Equipment / Facility Name</label>
+          <input type="text" id="facility-form-name" class="admin-input" required>
+        </div>
+        <div class="admin-grid-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Category</label>
+            <select id="facility-form-category" class="admin-select">
+              <option value="Latest Tech">Latest Tech</option>
+              <option value="Electrotherapy">Electrotherapy</option>
+              <option value="Equipment">Rehab Equipment</option>
+              <option value="Therapy">Manual Therapy</option>
+            </select>
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Image URL</label>
+            <input type="text" id="facility-form-img" class="admin-input" placeholder="e.g. assets/decomp.jpg">
+          </div>
+        </div>
+
+        <!-- File upload box for Facility Image -->
+        <div class="upload-zone" id="facility-img-upload-zone">
+          <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+          <p class="upload-text">Drag & drop facility photo here or <span>browse files</span></p>
+          <input type="file" id="facility-img-file-input" style="display:none;" accept="image/*">
+        </div>
+        <div id="facility-img-upload-status" style="font-size:12px; color:#1ABC9C; text-align:center; margin-bottom:12px;"></div>
+
+        <div class="admin-form-group">
+          <label class="admin-label">Description</label>
+          <textarea id="facility-form-desc" class="admin-textarea" required></textarea>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal('facility-modal')">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary">Save Facility</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= TESTIMONY MODAL ================= -->
+  <div class="admin-modal" id="testimony-modal">
+    <div class="admin-modal-content">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="testimony-modal-title">Testimonial Details</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('testimony-modal')">&times;</span>
+      </div>
+      <form id="testimony-form">
+        <input type="hidden" id="testimony-form-id">
+        <div class="admin-form-group">
+          <label class="admin-label">Patient Name</label>
+          <input type="text" id="testimony-form-name" class="admin-input" required>
+        </div>
+        <div class="admin-grid-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Treated Condition</label>
+            <input type="text" id="testimony-form-condition" class="admin-input" placeholder="e.g. Sciatica & back pain" required>
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Rating (1 to 5 Stars)</label>
+            <select id="testimony-form-rating" class="admin-select">
+              <option value="5">5 Stars</option>
+              <option value="4">4 Stars</option>
+              <option value="3">3 Stars</option>
+            </select>
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Patient Review Content</label>
+          <textarea id="testimony-form-text" class="admin-textarea" required></textarea>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal('testimony-modal')">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary">Save Testimonial</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= GALLERY MODAL ================= -->
+  <div class="admin-modal" id="gallery-modal">
+    <div class="admin-modal-content">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="gallery-modal-title">Media Details</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('gallery-modal')">&times;</span>
+      </div>
+      <form id="gallery-form">
+        <input type="hidden" id="gallery-form-id">
+        <div class="admin-form-group">
+          <label class="admin-label">Title / Caption</label>
+          <input type="text" id="gallery-form-title" class="admin-input" required>
+        </div>
+        <div class="admin-grid-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Media Type</label>
+            <select id="gallery-form-type" class="admin-select">
+              <option value="image">Photo</option>
+              <option value="video">Video</option>
+            </select>
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Category</label>
+            <select id="gallery-form-category" class="admin-select">
+              <option value="facility">Clinic Interior</option>
+              <option value="treatment">Treatment Setup</option>
+            </select>
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Media URL (e.g. assets/filename.jpg)</label>
+          <input type="text" id="gallery-form-url" class="admin-input" placeholder="e.g. assets/uploads/filename.jpg" required>
+        </div>
+
+        <!-- Drag and Drop Media Upload -->
+        <div class="upload-zone" id="gallery-media-upload-zone">
+          <i class="fa-solid fa-photo-film upload-icon"></i>
+          <p class="upload-text">Drag & drop photo or video here or <span>browse files</span></p>
+          <input type="file" id="gallery-media-file-input" style="display:none;" accept="image/*,video/*">
+        </div>
+        <div id="gallery-upload-status" style="font-size:12px; color:#1ABC9C; text-align:center; margin-bottom:12px;"></div>
+
+        <div class="admin-form-group">
+          <label class="admin-label">Long Description (Optional)</label>
+          <textarea id="gallery-form-desc" class="admin-textarea"></textarea>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal('gallery-modal')">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary">Save Media</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= BLOG MODAL ================= -->
+  <div class="admin-modal" id="blog-modal">
+    <div class="admin-modal-content" style="max-width: 800px;">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="blog-modal-title-label">Write Blog Post</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('blog-modal')">&times;</span>
+      </div>
+      <form id="blog-form">
+        <input type="hidden" id="blog-form-id">
+        <div class="admin-form-group">
+          <label class="admin-label">Blog Title</label>
+          <input type="text" id="blog-form-title" class="admin-input" placeholder="e.g. 5 Exercises to relieve pregnancy back pain" required>
+        </div>
+        <div class="admin-grid-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Author Name</label>
+            <input type="text" id="blog-form-author" class="admin-input" value="Dr. Disha Viraj Ranade" required>
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Featured Image URL</label>
+            <input type="text" id="blog-form-image" class="admin-input" placeholder="assets/uploads/blog.jpg">
+          </div>
+        </div>
+
+        <!-- File upload box for Blog Image -->
+        <div class="upload-zone" id="blog-img-upload-zone">
+          <i class="fa-solid fa-image upload-icon"></i>
+          <p class="upload-text">Drag & drop cover photo here or <span>browse files</span></p>
+          <input type="file" id="blog-img-file-input" style="display:none;" accept="image/*">
+        </div>
+        <div id="blog-img-upload-status" style="font-size:12px; color:#1ABC9C; text-align:center; margin-bottom:12px;"></div>
+
+        <div class="admin-form-group">
+          <label class="admin-label">Excerpt / Short Summary</label>
+          <textarea id="blog-form-excerpt" class="admin-textarea" placeholder="A short 2-line summary to show on the blogs list card..." required></textarea>
+        </div>
+        
+        <div class="admin-form-group">
+          <label class="admin-label">Content (HTML Format)</label>
+          <p style="font-size:11px; color:#A39BAE; margin-bottom:8px;">You can write paragraph tags: &lt;p&gt;Text&lt;/p&gt;, lists: &lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;, and strong tags: &lt;strong&gt;Bold&lt;/strong&gt;.</p>
+          <textarea id="blog-form-content" class="admin-textarea" style="min-height: 250px;" placeholder="<p>Write your blog post body here...</p>" required></textarea>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal('blog-modal')">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary">Save Blog Post</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= FAQ MODAL ================= -->
+  <div class="admin-modal" id="faq-modal">
+    <div class="admin-modal-content">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="faq-modal-title">FAQ Details</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('faq-modal')">&times;</span>
+      </div>
+      <form id="faq-form">
+        <input type="hidden" id="faq-form-id">
+        <div class="admin-form-group">
+          <label class="admin-label">Question</label>
+          <input type="text" id="faq-form-question" class="admin-input" placeholder="e.g. Do I need a doctor referral?" required>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Answer</label>
+          <textarea id="faq-form-answer" class="admin-textarea" rows="4" placeholder="Write answer here..." required></textarea>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal('faq-modal')">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary">Save FAQ</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= CONDITION CATEGORY MODAL ================= -->
+  <div class="admin-modal" id="condition-category-modal">
+    <div class="admin-modal-content">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="condition-category-modal-title">Condition Category Details</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('condition-category-modal')">&times;</span>
+      </div>
+      <form id="condition-category-form">
+        <input type="hidden" id="condition-category-form-original-name">
+        <div class="admin-form-group">
+          <label class="admin-label">Category / Body Part Name</label>
+          <input type="text" id="condition-category-form-name" class="admin-input" placeholder="e.g. Lower Back, Neck, Sports Injuries" required>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal('condition-category-modal')">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary">Save Category</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= CONDITION ITEM MODAL ================= -->
+  <div class="admin-modal" id="condition-item-modal">
+    <div class="admin-modal-content">
+      <div class="admin-modal-header">
+        <h3 class="admin-modal-title" id="condition-item-modal-title">Condition Details</h3>
+        <span class="admin-modal-close" onclick="closeAdminModal('condition-item-modal')">&times;</span>
+      </div>
+      <form id="condition-item-form">
+        <input type="hidden" id="condition-item-form-category">
+        <input type="hidden" id="condition-item-form-index">
+        <div class="admin-form-group">
+          <label class="admin-label">Condition Name</label>
+          <input type="text" id="condition-item-form-name" class="admin-input" placeholder="e.g. Sciatica, Tennis elbow, Patellar tendonitis" required>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal('condition-item-modal')">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-primary">Save Condition</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config-default.js?v=1.2"></script>
+  <script src="js/admin.js?v=1.2"></script>
+</body>
+</html>

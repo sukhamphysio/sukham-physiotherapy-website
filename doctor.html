@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Profile | Sukham Physiotherapy and Rehab</title>
+  
+  <!-- Dynamic Meta Tags (Filled by JS for SEO/AEO) -->
+  <meta name="description" content="Learn more about our specialist clinical team led by Dr. Disha Viraj Ranade at Sukham Physiotherapy Nashik.">
+  <meta name="author" content="Dr. Disha Viraj Ranade">
+  <link rel="canonical" href="" id="canonical-link">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/reset.css?v=1.3">
+  <link rel="stylesheet" href="css/themes.css?v=1.3">
+  <link rel="stylesheet" href="css/main.css?v=1.3">
+  
+  <!-- FontAwesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .doctor-profile-section {
+      padding: 120px 0 80px;
+    }
+    .profile-card-horizontal {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-lg);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-sm);
+    }
+    .profile-image-container {
+      width: 100%;
+      height: 380px;
+      border-radius: var(--border-radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .profile-badge {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .profile-name {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .profile-title {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .profile-specs-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .profile-spec-tag {
+      background-color: rgba(var(--primary-rgb), 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 6px 14px;
+      border-radius: var(--border-radius-sm);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .profile-social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .profile-bio-card {
+      background-color: var(--bg-surface-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-md);
+      padding: 40px;
+      margin-bottom: 40px;
+    }
+    .profile-section-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .profile-bio-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-main);
+    }
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .credential-item {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-sm);
+      padding: 20px;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+    .credential-icon {
+      color: var(--accent-color);
+      font-size: 20px;
+      margin-top: 2px;
+    }
+    .credential-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+    .credential-source {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    @media (max-width: 768px) {
+      .profile-card-horizontal {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 24px;
+      }
+      .profile-image-container {
+        height: 300px;
+      }
+      .profile-name {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body class="light-theme">
+
+  <!-- Sticky Header -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html#home" class="logo-link">
+        <img src="assets/logo.jpg" alt="Logo" class="logo-img">
+        <div class="brand-text">
+          <span class="brand-name">Sukham</span>
+          <span class="brand-sub">Physiotherapy & Rehab</span>
+        </div>
+      </a>
+      
+      <nav class="nav-menu">
+        <a href="index.html#home" class="nav-link">Home</a>
+        <a href="index.html#testimonies" class="nav-link">Testimonials</a>
+        <a href="index.html#services" class="nav-link">Treatments</a>
+        <a href="index.html#facilities" class="nav-link">Facilities</a>
+        <a href="index.html#doctors" class="nav-link">Doctors</a>
+        <a href="index.html#gallery" class="nav-link">Gallery</a>
+        <a href="index.html#blogs" class="nav-link">Blogs</a>
+        <a href="index.html#faqs" class="nav-link">FAQs</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="https://wa.me/917447862720" target="_blank" class="btn btn-primary btn-sm">
+          <i class="fa-brands fa-whatsapp"></i> Whatsapp Us
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Doctor Profile Main Area -->
+  <main class="doctor-profile-section">
+    <div class="container" id="profile-container">
+      <p style="text-align: center; color: var(--text-muted);">Loading profile details...</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Sukham Physiotherapy</h4>
+          <p>Advanced rehabilitation and customized care designed to restore your movement and wellness. Led by Dr. Disha Viraj Ranade.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html#home" class="footer-link">Home</a>
+            <a href="index.html#testimonies" class="footer-link">Testimonials</a>
+            <a href="index.html#services" class="footer-link">Treatments</a>
+            <a href="index.html#facilities" class="footer-link">Facilities</a>
+            <a href="index.html#doctors" class="footer-link">Doctors</a>
+            <a href="index.html#gallery" class="footer-link">Gallery</a>
+            <a href="index.html#blogs" class="footer-link">Blogs</a>
+            <a href="index.html#faqs" class="footer-link">FAQs</a>
+            <a href="index.html#contact" class="footer-link">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sukham Physiotherapy and Rehab. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Javascript Integration -->
+  <script src="js/config-default.js?v=1.3"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Theme Toggle Logic
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+      
+      const savedTheme = localStorage.getItem('theme') || 'light-theme';
+      body.className = savedTheme;
+      updateThemeIcon(savedTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = body.className;
+        const newTheme = currentTheme === 'light-theme' ? 'dark-theme' : 'light-theme';
+        body.className = newTheme;
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      });
+
+      function updateThemeIcon(theme) {
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'dark-theme') {
+          icon.className = 'fa-solid fa-sun';
+        } else {
+          icon.className = 'fa-solid fa-moon';
+        }
+      }
+
+      // Fetch Doctor Details
+      const params = new URLSearchParams(window.location.search);
+      const doctorId = params.get('id');
+      
+      if (!doctorId) {
+        window.location.href = 'index.html';
+        return;
+      }
+
+      let state = null;
+      try {
+        const cached = localStorage.getItem('sukham_clinic_db');
+        if (cached) {
+          state = JSON.parse(cached);
+        } else {
+          const response = await fetch(`data/data.json?t=${Date.now()}`);
+          if (!response.ok) throw new Error();
+          state = await response.json();
+        }
+      } catch (e) {
+        state = window.DEFAULT_CLINIC_DATA;
+      }
+
+      const slugify = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      const doc = state.doctors ? state.doctors.find(d => d.id === doctorId || slugify(d.name) === doctorId) : null;
+      
+      // Safety: Only doctors categorized as 'medical' get profile pages
+      if (!doc || doc.category !== 'medical') {
+        document.getElementById('profile-container').innerHTML = `
+          <div style="text-align: center; padding: 40px 0;">
+            <i class="fa-solid fa-user-slash" style="font-size: 48px; color: var(--primary-color); margin-bottom: 20px;"></i>
+            <h2 style="font-size: 24px; margin-bottom: 12px;">Profile Not Found</h2>
+            <p style="color: var(--text-muted); margin-bottom: 24px;">The therapist profile you are looking for does not exist or is unavailable.</p>
+            <a href="index.html" class="btn btn-primary">Return Home</a>
+          </div>
+        `;
+        return;
+      }
+
+      // Update Metadata for SEO
+      document.title = `${doc.name} | ${doc.title} | Sukham Physiotherapy Nashik`;
+      document.querySelector('meta[name="description"]').setAttribute('content', doc.bio.substring(0, 150) + '...');
+      document.getElementById('canonical-link').setAttribute('href', window.location.href);
+
+      // Render Profile Content
+      const container = document.getElementById('profile-container');
+      const specsHtml = doc.specialties ? doc.specialties.map(spec => `<span class="profile-spec-tag">${spec}</span>`).join('') : '';
+
+      container.innerHTML = `
+        <div class="profile-card-horizontal">
+          <div class="profile-image-container">
+            <img src="${doc.image || 'assets/logo.jpg'}" class="profile-image" alt="${doc.name}">
+          </div>
+          <div class="profile-info">
+            <span class="profile-badge">Medical Team Specialist</span>
+            <h1 class="profile-name">${doc.name}</h1>
+            <div class="profile-title">${doc.title}</div>
+            <div class="profile-specs-list">
+              ${specsHtml}
+            </div>
+            <div>
+              <a href="https://wa.me/917447862720?text=Hello%20Sukham%20Physiotherapy%2C%20I%20would%20like%20to%20book%20an%20appointment%20with%20${encodeURIComponent(doc.name)}." target="_blank" class="btn btn-primary" style="display:inline-flex; width:auto;">
+                <i class="fa-brands fa-whatsapp"></i> Book Appointment
+              </a>
+            </div>
+            <div class="profile-social-links">
+              <a href="${doc.facebook || '#'}" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="${doc.instagram || '#'}" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+              <a href="${doc.linkedin || '#'}" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-bio-card">
+          <h2 class="profile-section-title"><i class="fa-solid fa-user-doctor"></i> Professional Bio</h2>
+          <div class="profile-bio-text">
+            <p>${doc.bio}</p>
+          </div>
+        </div>
+
+        <div class="profile-bio-card" style="margin-bottom: 0;">
+          <h2 class="profile-section-title"><i class="fa-solid fa-graduation-cap"></i> Professional Credentials</h2>
+          <div class="credentials-grid">
+            <div class="credential-item">
+              <div class="credential-icon"><i class="fa-solid fa-circle-check"></i></div>
+              <div>
+                <div class="credential-name">Bachelor of Physiotherapy (BPTh)</div>
+                <div class="credential-source">University Medical Degree Roster</div>
+              </div>
+            </div>
+            <div class="credential-item">
+              <div class="credential-icon"><i class="fa-solid fa-circle-check"></i></div>
+              <div>
+                <div class="credential-name">Registered Physiotherapist Member</div>
+                <div class="credential-source">Indian Association of Physiotherapists (IAP)</div>
+              </div>
+            </div>
+            <div class="credential-item" style="grid-column: span 1;">
+              <div class="credential-icon"><i class="fa-solid fa-certificate"></i></div>
+              <div>
+                <div class="credential-name">Certified Clinical Specialist</div>
+                <div class="credential-source">Dry Needling (CDNT), Cupping (CMDCT), IASTM & Kinesio Taping</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Inject JSON-LD Physician/MedicalBusiness Author Schema (for E-E-A-T)
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "Physician",
+        "name": doc.name,
+        "image": window.location.origin + "/" + doc.image,
+        "medicalSpecialty": doc.specialties,
+        "telephone": "+917447862720",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Shop no. 238/239, 2nd floor, D-Wing, Thakkers M Square, Near Akashwani Tower, Gangapur Road, Purnvad Nagar",
+          "addressLocality": "Nashik",
+          "addressRegion": "Maharashtra",
+          "postalCode": "422013",
+          "addressCountry": "IN"
+        },
+        "description": doc.bio,
+        "publishingPrinciples": "https://www.iapindia.org/",
+        "hasCredential": {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Professional License",
+          "name": "Registered Physiotherapist",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Indian Association of Physiotherapists (IAP)"
+          }
+        }
+      };
+
+      const scriptTag = document.createElement('script');
+      scriptTag.type = 'application/ld+json';
+      scriptTag.text = JSON.stringify(schema);
+      document.head.appendChild(scriptTag);
+    });
+  </script>
+</body>
+</html>

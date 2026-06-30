@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Blogs & Recovery Guides | Sukham Physiotherapy Nashik</title>
+  
+  <!-- Dynamic Meta Tags -->
+  <meta name="description" content="Explore expert health blogs, exercise guidelines, and physiotherapy articles written by Dr. Disha Viraj Ranade at Sukham Rehab Nashik.">
+  <meta name="author" content="Dr. Disha Viraj Ranade">
+  <link rel="canonical" href="" id="canonical-link">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/reset.css?v=1.3">
+  <link rel="stylesheet" href="css/themes.css?v=1.3">
+  <link rel="stylesheet" href="css/main.css?v=1.3">
+  
+  <!-- FontAwesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .blogs-page-section {
+      padding: 120px 0 80px;
+    }
+    .blogs-page-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+    .blogs-page-title {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+    .blogs-page-subtitle {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .blogs-search-wrapper {
+      max-width: 600px;
+      margin: 0 auto 50px;
+      position: relative;
+    }
+    .blogs-search-input {
+      width: 100%;
+      background-color: var(--bg-surface-alt);
+      border: 2px solid var(--border-color);
+      color: var(--text-main);
+      padding: 16px 20px 16px 50px;
+      border-radius: 50px;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .blogs-search-input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.1);
+    }
+    .blogs-search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 18px;
+    }
+    .blogs-directory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+    }
+    .no-blogs-card {
+      grid-column: span 3;
+      text-align: center;
+      padding: 50px;
+      color: var(--text-muted);
+      border: 1px dashed var(--border-color);
+      border-radius: var(--border-radius-md);
+    }
+    @media (max-width: 768px) {
+      .blogs-directory-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body class="light-theme">
+
+  <!-- Sticky Header -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html#home" class="logo-link">
+        <img src="assets/logo.jpg" alt="Logo" class="logo-img">
+        <div class="brand-text">
+          <span class="brand-name">Sukham</span>
+          <span class="brand-sub">Physiotherapy & Rehab</span>
+        </div>
+      </a>
+      
+      <nav class="nav-menu">
+        <a href="index.html#home" class="nav-link">Home</a>
+        <a href="index.html#testimonies" class="nav-link">Testimonials</a>
+        <a href="index.html#services" class="nav-link">Treatments</a>
+        <a href="index.html#facilities" class="nav-link">Facilities</a>
+        <a href="index.html#doctors" class="nav-link">Doctors</a>
+        <a href="index.html#gallery" class="nav-link">Gallery</a>
+        <a href="index.html#blogs" class="nav-link">Blogs</a>
+        <a href="index.html#faqs" class="nav-link">FAQs</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="https://wa.me/917447862720" target="_blank" class="btn btn-primary btn-sm">
+          <i class="fa-brands fa-whatsapp"></i> Whatsapp Us
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Blogs Catalog Section -->
+  <main class="blogs-page-section">
+    <div class="container">
+      <div class="blogs-page-header">
+        <h1 class="blogs-page-title">Clinic Publications</h1>
+        <p class="blogs-page-subtitle">Read detailed clinical rehabilitation insights, exercises, and health posts compiled by our physical therapy staff.</p>
+      </div>
+
+      <div class="blogs-search-wrapper">
+        <i class="fa-solid fa-magnifying-glass blogs-search-icon"></i>
+        <input type="text" id="blog-search" class="blogs-search-input" placeholder="Search articles by keywords or symptoms...">
+      </div>
+
+      <div class="blogs-directory-grid" id="blogs-list-container">
+        <!-- Filled Dynamically -->
+        <p style="text-align: center; color: var(--text-muted); grid-column: span 3;">Loading publication roster...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Sukham Physiotherapy</h4>
+          <p>Advanced rehabilitation and customized care designed to restore your movement and wellness. Led by Dr. Disha Viraj Ranade.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html#home" class="footer-link">Home</a>
+            <a href="index.html#testimonies" class="footer-link">Testimonials</a>
+            <a href="index.html#services" class="footer-link">Treatments</a>
+            <a href="index.html#facilities" class="footer-link">Facilities</a>
+            <a href="index.html#doctors" class="footer-link">Doctors</a>
+            <a href="index.html#gallery" class="footer-link">Gallery</a>
+            <a href="index.html#blogs" class="footer-link">Blogs</a>
+            <a href="index.html#faqs" class="footer-link">FAQs</a>
+            <a href="index.html#contact" class="footer-link">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sukham Physiotherapy and Rehab. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Javascript Integration -->
+  <script src="js/config-default.js?v=1.3"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Theme Toggle Logic
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+      
+      const savedTheme = localStorage.getItem('theme') || 'light-theme';
+      body.className = savedTheme;
+      updateThemeIcon(savedTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = body.className;
+        const newTheme = currentTheme === 'light-theme' ? 'dark-theme' : 'light-theme';
+        body.className = newTheme;
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      });
+
+      function updateThemeIcon(theme) {
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'dark-theme') {
+          icon.className = 'fa-solid fa-sun';
+        } else {
+          icon.className = 'fa-solid fa-moon';
+        }
+      }
+
+      // Fetch Blogs Database
+      let state = null;
+      try {
+        const cached = localStorage.getItem('sukham_clinic_db');
+        if (cached) {
+          state = JSON.parse(cached);
+        } else {
+          const response = await fetch(`data/data.json?t=${Date.now()}`);
+          if (!response.ok) throw new Error();
+          state = await response.json();
+        }
+      } catch (e) {
+        state = window.DEFAULT_CLINIC_DATA;
+      }
+
+      const blogs = state.blogs || [];
+      const listContainer = document.getElementById('blogs-list-container');
+      
+      // Update Canonical Link for SEO
+      document.getElementById('canonical-link').setAttribute('href', window.location.href);
+
+      // Slugify helper
+      const slugify = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      
+      function getLocalUrl(url) {
+        if (!url) return 'assets/logo.jpg';
+        return url;
+      }
+
+      // Render Blog Cards
+      function renderBlogCards(items) {
+        if (items.length === 0) {
+          listContainer.innerHTML = `
+            <div class="no-blogs-card">
+              <i class="fa-solid fa-book-open" style="font-size: 36px; color: var(--text-muted); margin-bottom: 12px; display:block;"></i>
+              No publications matched your search terms.
+            </div>
+          `;
+          return;
+        }
+
+        listContainer.innerHTML = items.map((blog, index) => `
+          <div class="blog-card reveal active">
+            <div class="blog-img-wrapper">
+              <img src="${getLocalUrl(blog.image)}" alt="${blog.title}" class="blog-img" loading="lazy">
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span><i class="fa-regular fa-calendar"></i> ${blog.date}</span>
+                <span><i class="fa-regular fa-user"></i> ${blog.author || 'Dr. Disha'}</span>
+              </div>
+              <h3 class="blog-title">${blog.title}</h3>
+              <p class="blog-excerpt">${blog.excerpt}</p>
+              <a href="blog.html?id=${slugify(blog.title)}" class="blog-read-btn" style="text-align: center; justify-content: center; display: inline-flex;">Read Post <i class="fa-solid fa-angle-right"></i></a>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      renderBlogCards(blogs);
+
+      // Wire Search Filter Input
+      const searchInput = document.getElementById('blog-search');
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        if (!query) {
+          renderBlogCards(blogs);
+          return;
+        }
+
+        const filtered = blogs.filter(blog => 
+          blog.title.toLowerCase().includes(query) || 
+          blog.excerpt.toLowerCase().includes(query) ||
+          blog.content.toLowerCase().includes(query)
+        );
+        renderBlogCards(filtered);
+      });
+    });
+  </script>
+</body>
+</html>

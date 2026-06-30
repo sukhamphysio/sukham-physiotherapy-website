@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frequently Asked Questions (FAQs) | Sukham Physiotherapy Nashik</title>
+  
+  <!-- Dynamic Meta Tags (Filled by JS for SEO/AEO) -->
+  <meta name="description" content="Find answers to frequently asked questions about physiotherapy, spine decompression therapy, insurance, sessions, and recovery at Sukham Rehab Nashik.">
+  <meta name="author" content="Dr. Disha Viraj Ranade">
+  <link rel="canonical" href="" id="canonical-link">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/reset.css?v=1.3">
+  <link rel="stylesheet" href="css/themes.css?v=1.3">
+  <link rel="stylesheet" href="css/main.css?v=1.3">
+  
+  <!-- FontAwesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .faqs-page-section {
+      padding: 120px 0 80px;
+    }
+    .faqs-page-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+    .faqs-page-title {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+    .faqs-page-subtitle {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .faqs-search-wrapper {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+    .faqs-search-input {
+      width: 100%;
+      background-color: var(--bg-surface-alt);
+      border: 2px solid var(--border-color);
+      color: var(--text-main);
+      padding: 16px 20px 16px 50px;
+      border-radius: 50px;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .faqs-search-input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.1);
+    }
+    .faqs-search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 18px;
+    }
+    .faqs-directory-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .faq-dir-item {
+      background-color: var(--bg-surface-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-md);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .faq-dir-header {
+      padding: 24px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      gap: 20px;
+    }
+    .faq-dir-question {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0;
+    }
+    .faq-dir-toggle {
+      color: var(--primary-color);
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+    .faq-dir-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      background-color: var(--bg-surface);
+      border-top: 1px solid transparent;
+    }
+    .faq-dir-answer {
+      padding: 24px 30px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-size: 15px;
+      margin: 0;
+    }
+    .faq-dir-item.active .faq-dir-toggle {
+      transform: rotate(180deg);
+    }
+    .faq-dir-item.active .faq-dir-body {
+      border-top-color: var(--border-color);
+    }
+    .no-results-card {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+      border: 1px dashed var(--border-color);
+      border-radius: var(--border-radius-md);
+    }
+  </style>
+</head>
+<body class="light-theme">
+
+  <!-- Sticky Header -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html#home" class="logo-link">
+        <img src="assets/logo.jpg" alt="Logo" class="logo-img">
+        <div class="brand-text">
+          <span class="brand-name">Sukham</span>
+          <span class="brand-sub">Physiotherapy & Rehab</span>
+        </div>
+      </a>
+      
+      <nav class="nav-menu">
+        <a href="index.html#home" class="nav-link">Home</a>
+        <a href="index.html#testimonies" class="nav-link">Testimonials</a>
+        <a href="index.html#services" class="nav-link">Treatments</a>
+        <a href="index.html#facilities" class="nav-link">Facilities</a>
+        <a href="index.html#doctors" class="nav-link">Doctors</a>
+        <a href="index.html#gallery" class="nav-link">Gallery</a>
+        <a href="index.html#blogs" class="nav-link">Blogs</a>
+        <a href="index.html#faqs" class="nav-link">FAQs</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="https://wa.me/917447862720" target="_blank" class="btn btn-primary btn-sm">
+          <i class="fa-brands fa-whatsapp"></i> Whatsapp Us
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- FAQs Directory Area -->
+  <main class="faqs-page-section">
+    <div class="container">
+      <div class="faqs-page-header">
+        <h1 class="faqs-page-title">Frequently Asked Questions</h1>
+        <p class="faqs-page-subtitle">Have questions about clinical sessions, treatments, or timings? Explore our detailed directory below or search by keywords.</p>
+      </div>
+
+      <div class="faqs-search-wrapper">
+        <i class="fa-solid fa-magnifying-glass faqs-search-icon"></i>
+        <input type="text" id="faq-search" class="faqs-search-input" placeholder="Search questions (e.g. decompression, timings, charges)...">
+      </div>
+
+      <div class="faqs-directory-list" id="faqs-list-container">
+        <!-- Rendered Dynamically -->
+        <p style="text-align: center; color: var(--text-muted);">Loading FAQs directory...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Sukham Physiotherapy</h4>
+          <p>Advanced rehabilitation and customized care designed to restore your movement and wellness. Led by Dr. Disha Viraj Ranade.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html#home" class="footer-link">Home</a>
+            <a href="index.html#testimonies" class="footer-link">Testimonials</a>
+            <a href="index.html#services" class="footer-link">Treatments</a>
+            <a href="index.html#facilities" class="footer-link">Facilities</a>
+            <a href="index.html#doctors" class="footer-link">Doctors</a>
+            <a href="index.html#gallery" class="footer-link">Gallery</a>
+            <a href="index.html#blogs" class="footer-link">Blogs</a>
+            <a href="index.html#faqs" class="footer-link">FAQs</a>
+            <a href="index.html#contact" class="footer-link">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sukham Physiotherapy and Rehab. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Javascript Integration -->
+  <script src="js/config-default.js?v=1.3"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Theme Toggle Logic
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+      
+      const savedTheme = localStorage.getItem('theme') || 'light-theme';
+      body.className = savedTheme;
+      updateThemeIcon(savedTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = body.className;
+        const newTheme = currentTheme === 'light-theme' ? 'dark-theme' : 'light-theme';
+        body.className = newTheme;
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      });
+
+      function updateThemeIcon(theme) {
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'dark-theme') {
+          icon.className = 'fa-solid fa-sun';
+        } else {
+          icon.className = 'fa-solid fa-moon';
+        }
+      }
+
+      // Fetch FAQs Database
+      let state = null;
+      try {
+        const cached = localStorage.getItem('sukham_clinic_db');
+        if (cached) {
+          state = JSON.parse(cached);
+        } else {
+          const response = await fetch(`data/data.json?t=${Date.now()}`);
+          if (!response.ok) throw new Error();
+          state = await response.json();
+        }
+      } catch (e) {
+        state = window.DEFAULT_CLINIC_DATA;
+      }
+
+      const faqs = state.faqs || [];
+      const listContainer = document.getElementById('faqs-list-container');
+      
+      // Update Canonical Meta for SEO
+      document.getElementById('canonical-link').setAttribute('href', window.location.href);
+
+      // Render Accordion list
+      function renderAccordions(items) {
+        if (items.length === 0) {
+          listContainer.innerHTML = `
+            <div class="no-results-card">
+              <i class="fa-solid fa-face-question" style="font-size: 30px; color: var(--text-muted); margin-bottom: 12px; display:block;"></i>
+              No matching questions found. Try search keywords like 'timing', 'charges', or 'decompression'.
+            </div>
+          `;
+          return;
+        }
+
+        listContainer.innerHTML = items.map((faq, index) => `
+          <div class="faq-dir-item" data-id="${faq.id}">
+            <div class="faq-dir-header">
+              <h3 class="faq-dir-question">${faq.question}</h3>
+              <i class="fa-solid fa-chevron-down faq-dir-toggle"></i>
+            </div>
+            <div class="faq-dir-body">
+              <p class="faq-dir-answer">${faq.answer}</p>
+            </div>
+          </div>
+        `).join('');
+
+        // Wire Header Clicks for Accordion Expand/Collapse
+        document.querySelectorAll('.faq-dir-header').forEach(header => {
+          header.addEventListener('click', () => {
+            const item = header.parentElement;
+            const body = item.querySelector('.faq-dir-body');
+            const isActive = item.classList.contains('active');
+
+            // Collapse other active items
+            document.querySelectorAll('.faq-dir-item').forEach(other => {
+              if (other !== item && other.classList.contains('active')) {
+                other.classList.remove('active');
+                other.querySelector('.faq-dir-body').style.maxHeight = '0';
+              }
+            });
+
+            if (isActive) {
+              item.classList.remove('active');
+              body.style.maxHeight = '0';
+            } else {
+              item.classList.add('active');
+              body.style.maxHeight = body.scrollHeight + 'px';
+            }
+          });
+        });
+      }
+
+      renderAccordions(faqs);
+
+      // Wire Search Filter Input
+      const searchInput = document.getElementById('faq-search');
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        if (!query) {
+          renderAccordions(faqs);
+          return;
+        }
+
+        const filtered = faqs.filter(faq => 
+          faq.question.toLowerCase().includes(query) || 
+          faq.answer.toLowerCase().includes(query)
+        );
+        renderAccordions(filtered);
+      });
+
+      // Inject JSON-LD FAQPage Schema for Search Result Rich Snippets
+      if (faqs.length > 0) {
+        const schema = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        };
+
+        const scriptTag = document.createElement('script');
+        scriptTag.type = 'application/ld+json';
+        scriptTag.text = JSON.stringify(schema);
+        document.head.appendChild(scriptTag);
+      }
+    });
+  </script>
+</body>
+</html>
