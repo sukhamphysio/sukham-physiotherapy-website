@@ -667,11 +667,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Close Menu on Link Click
+    // Close Menu & Custom Smooth Scroll on Link Click
     navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        menuToggle.querySelector('i').className = 'fa-solid fa-bars';
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            // Close mobile menu
+            navMenu.classList.remove('active');
+            const menuIcon = menuToggle.querySelector('i');
+            if (menuIcon) menuIcon.className = 'fa-solid fa-bars';
+
+            // Wait a short moment for menu collapse to stabilize layout offsets
+            setTimeout(() => {
+              const navbarHeight = navbar.offsetHeight || 80;
+              const targetTop = targetSection.offsetTop - navbarHeight;
+              window.scrollTo({
+                top: targetTop,
+                behavior: 'smooth'
+              });
+            }, 150);
+          }
+        }
       });
     });
   }
