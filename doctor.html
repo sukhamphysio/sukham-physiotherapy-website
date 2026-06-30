@@ -351,10 +351,10 @@
                 <i class="fa-brands fa-whatsapp"></i> Book Appointment
               </a>
             </div>
-            <div class="profile-social-links" style="display: ${doc.facebook || doc.instagram || doc.linkedin ? 'flex' : 'none'};">
-              ${doc.facebook ? `<a href="${doc.facebook}" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>` : ''}
-              ${doc.instagram ? `<a href="${doc.instagram}" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>` : ''}
-              ${doc.linkedin ? `<a href="${doc.linkedin}" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>` : ''}
+            <div class="profile-social-links" style="display: ${(doc.facebook && doc.facebook !== '#') || (doc.instagram && doc.instagram !== '#') || (doc.linkedin && doc.linkedin !== '#') ? 'flex' : 'none'};">
+              ${(doc.facebook && doc.facebook !== '#') ? `<a href="${doc.facebook}" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>` : ''}
+              ${(doc.instagram && doc.instagram !== '#') ? `<a href="${doc.instagram}" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>` : ''}
+              ${(doc.linkedin && doc.linkedin !== '#') ? `<a href="${doc.linkedin}" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>` : ''}
             </div>
           </div>
         </div>
@@ -409,9 +409,9 @@
         const fb = document.getElementById('footer-facebook');
         const ig = document.getElementById('footer-instagram');
         const li = document.getElementById('footer-linkedin');
-        if (fb) { fb.href = state.clinicInfo.facebook || '#'; fb.style.display = state.clinicInfo.facebook ? 'inline-flex' : 'none'; fb.target = '_blank'; }
-        if (ig) { ig.href = state.clinicInfo.instagram || '#'; ig.style.display = state.clinicInfo.instagram ? 'inline-flex' : 'none'; ig.target = '_blank'; }
-        if (li) { li.href = state.clinicInfo.linkedin || '#'; li.style.display = state.clinicInfo.linkedin ? 'inline-flex' : 'none'; li.target = '_blank'; }
+        if (fb) { fb.href = state.clinicInfo.facebook || '#'; fb.style.display = (state.clinicInfo.facebook && state.clinicInfo.facebook !== '#') ? 'inline-flex' : 'none'; fb.target = '_blank'; }
+        if (ig) { ig.href = state.clinicInfo.instagram || '#'; ig.style.display = (state.clinicInfo.instagram && state.clinicInfo.instagram !== '#') ? 'inline-flex' : 'none'; ig.target = '_blank'; }
+        if (li) { li.href = state.clinicInfo.linkedin || '#'; li.style.display = (state.clinicInfo.linkedin && state.clinicInfo.linkedin !== '#') ? 'inline-flex' : 'none'; li.target = '_blank'; }
       }
     });
   </script>

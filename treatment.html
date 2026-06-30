@@ -372,9 +372,9 @@
         const fb = document.getElementById('footer-facebook');
         const ig = document.getElementById('footer-instagram');
         const li = document.getElementById('footer-linkedin');
-        if (fb) { fb.href = state.clinicInfo.facebook || '#'; fb.style.display = state.clinicInfo.facebook ? 'inline-flex' : 'none'; fb.target = '_blank'; }
-        if (ig) { ig.href = state.clinicInfo.instagram || '#'; ig.style.display = state.clinicInfo.instagram ? 'inline-flex' : 'none'; ig.target = '_blank'; }
-        if (li) { li.href = state.clinicInfo.linkedin || '#'; li.style.display = state.clinicInfo.linkedin ? 'inline-flex' : 'none'; li.target = '_blank'; }
+        if (fb) { fb.href = state.clinicInfo.facebook || '#'; fb.style.display = (state.clinicInfo.facebook && state.clinicInfo.facebook !== '#') ? 'inline-flex' : 'none'; fb.target = '_blank'; }
+        if (ig) { ig.href = state.clinicInfo.instagram || '#'; ig.style.display = (state.clinicInfo.instagram && state.clinicInfo.instagram !== '#') ? 'inline-flex' : 'none'; ig.target = '_blank'; }
+        if (li) { li.href = state.clinicInfo.linkedin || '#'; li.style.display = (state.clinicInfo.linkedin && state.clinicInfo.linkedin !== '#') ? 'inline-flex' : 'none'; li.target = '_blank'; }
       }
     });
   </script>
