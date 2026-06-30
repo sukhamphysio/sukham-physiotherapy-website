@@ -11,7 +11,8 @@
     "logoUrl": "assets/logo.jpg",
     "githubUser": "sukhamphysio",
     "githubRepo": "sukham-physiotherapy-website",
-    "githubToken": ""
+    "githubToken": "",
+    "instagram": "https://www.instagram.com/sukham_physio/"
   },
   "theme": {
     "primaryColor": "#5D2B7E",
@@ -139,7 +140,7 @@
         "IASTM"
       ],
       "facebook": "#",
-      "instagram": "#",
+      "instagram": "https://www.instagram.com/sukham_physio/",
       "linkedin": "#",
       "category": "medical",
       "credentials": [
