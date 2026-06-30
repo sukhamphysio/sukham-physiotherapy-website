@@ -3,9 +3,9 @@
     "name": "Sukham Physiotherapy and Rehab",
     "tagline": "Movement is Life, Healing is Sukham",
     "phone": "7447862720",
-    "email": "disha.ranade@gmail.com",
+    "email": "sukhamphysio@gmail.com",
     "address": "Shop no. 238/239, 2nd floor, D-Wing, Thakkers M Square, Near Akashwani Tower, Gangapur Road, Purnvad Nagar, Nashik - 422013",
-    "workingHours": "Mon - Sat: 10:30 AM - 7:00 PM | Sunday: Closed",
+    "workingHours": "Mon - Sat: 10:00 AM - 7:00 PM | Sunday: Closed",
     "mapEmbed": "https://maps.google.com/maps?q=2nd%20Floor,%20Sukham%20Physiotherapy%20%26%20Rehab%20%7C%20Dr.Disha%20Ranade%20(PT),%20Gangapur%20Road,%20Nashik&t=&z=16&ie=UTF8&iwloc=&output=embed",
     "whatsappText": "Hello Sukham Physiotherapy, I would like to book an appointment.",
     "logoUrl": "assets/logo.jpg",
@@ -36,11 +36,11 @@
     "description": "Expert physiotherapy care led by Dr. Disha Viraj Ranade. We specialize in spine rehabilitation, sports injuries, post-operative care, and prenatal/postnatal wellness in a state-of-the-art clinic.",
     "ctaText": "Book Appointment",
     "slides": [
-      "assets/uploads/AAI_1637.jpg",
-      "assets/uploads/AAI_1628.jpg",
-      "assets/uploads/A7V02102.jpg",
-      "assets/uploads/AAI_1679.jpg",
-      "assets/uploads/_FBA9704.jpg"
+      "assets/uploads/Clinic_Photo_1.jpg",
+      "assets/uploads/Clinic_Photo_2.jpg",
+      "assets/uploads/Clinic_Photo_3.jpg",
+      "assets/uploads/Clinic_Photo_4.jpg",
+      "assets/uploads/Clinic_Photo_5.jpg"
     ]
   },
   "services": [
@@ -83,10 +83,8 @@
       "id": "s6",
       "title": "Sports Injury & Fitness",
       "desc": "Targeted recovery for athletes with sprains, ligament tears, tendonitis, and functional conditioning to ensure a safe return to sport.",
-      "icon": "🏃‍♂️",
+      "icon": "🏃‍♀️",
       "details": "Our sports rehabilitation is tailored for athletes of all levels to recover from sports-specific injuries like ankle sprains, muscle tears, ACL strains, tennis elbow, and rotator cuff injuries. We utilize advanced electrotherapy suites, manual therapy (Dry Needling, Cupping, IASTM), and functional rehabilitation grids to restore joint agility, muscle power, and coordinate safe sport-specific return protocols."
-    }
-  ],": "🏃‍♀️"
     }
   ],
   "facilities": [
@@ -95,35 +93,35 @@
       "name": "4D Fully Automatic Spinal Decompression Bed",
       "category": "Latest Tech",
       "desc": "Our flagship advanced decompression bed. It utilizes intelligent traction systems to gently relieve spinal pressure, targeting herniated discs, sciatica, and chronic back pain without surgical intervention.",
-      "image": "assets/uploads/20260622_143208.jpg"
+      "image": "assets/uploads/Spinal_Decompression_Bed_2.jpg"
     },
     {
       "id": "f2",
       "name": "Rising Yeti Weight Training",
       "category": "Latest Tech",
       "desc": "A cutting-edge weight training system specifically customized for physiotherapy rehabilitation. It allows incremental, safe, and guided loading to restore strength and joint stability.",
-      "image": "assets/uploads/20260622_143409.jpg"
+      "image": "assets/uploads/Rising_Yeti.jpg"
     },
     {
       "id": "f3",
       "name": "Traction Bed & Unit",
       "category": "Equipment",
       "desc": "Equipped with automated cervical and lumbar traction units to target nerve compressions and spinal stiffness.",
-      "image": "assets/uploads/20260622_143154.jpg"
+      "image": "assets/uploads/Traction_Unit.jpg"
     },
     {
       "id": "f4",
       "name": "Advanced Electrotherapy Suite",
       "category": "Electrotherapy",
       "desc": "Comprehensive pain relief and healing units including Interferential Therapy (IFT), TENS, Therapeutic Ultrasound, Shockwave Therapy, and Laser Therapy.",
-      "image": "assets/uploads/20260622_143454.jpg"
+      "image": "assets/uploads/Bed_section_1.jpg"
     },
     {
       "id": "f5",
       "name": "Manual & Sports Therapy",
       "category": "Therapy",
       "desc": "Specialized clinical interventions including Dry Needling, Cupping Therapy, IASTM (Instrument Assisted Soft Tissue Mobilization), and Kinesiology Taping.",
-      "image": "assets/uploads/20260622_143442.jpg"
+      "image": "assets/uploads/Exercise_Area.jpg"
     }
   ],
   "doctors": [
@@ -132,8 +130,8 @@
       "name": "Dr. Disha Viraj Ranade",
       "title": "Founder & Chief Physiotherapist",
       "gender": "Female",
-      "bio": "Dr. Disha Viraj Ranade (PT), BPTh, is the Chief Physiotherapist & Founder of Sukham Physiotherapy and Rehab. She is a registered member of the Indian Association of Physiotherapists (IAP Reg No. 71561) with senior clinical experience at Kelkar Orthopaedic Hospital, Nashik. She specializes in spine decompression, post-operative care, musculoskeletal (MSK) rehab, and home visits. She is a highly certified specialist in Pre/Post-Natal Fitness, Cupping (CMDCT), Dry Needling (CDNT), Kinesio Taping (CKTT), and IASTM.",
-      "image": "assets/uploads/file_000000009b107208be9cc41fd9848acc.jpg",
+      "bio": "Dr. Disha Viraj Ranade (PT), BPTh, is the Chief Physiotherapist & Founder of Sukham Physiotherapy and Rehab. She is a registered member of the Indian Association of Physiotherapists (IAP Reg No. 71561) with senior clinical experience at Kelkar Orthopaedic Hospital, Nashik. She specializes in Spine related conditions, post-operative care, musculoskeletal (MSK) rehab, and home visits. She is a highly certified specialist in Pre/Post-Natal Fitness, Cupping (CMDCT), Dry Needling (CDNT), Kinesio Taping (CKTT), and IASTM.",
+      "image": "assets/uploads/Dr_Disha_Ranade.jpg",
       "specialties": [
         "MSK",
         "Spine Rehabilitation",
@@ -147,21 +145,17 @@
       "category": "medical"
     },
     {
-      "id": "d2",
-      "name": "Amit Sharma",
-      "title": "Outreach Coordinator",
-      "gender": "Male",
-      "bio": "Amit coordinates our community health camps, corporate ergonomic wellness workshops, and public outreach programs across Nashik, helping extend Sukham's healing services to corporate and rural segments.",
-      "image": "assets/logo.jpg",
-      "specialties": [
-        "Community Camps",
-        "Workplace Wellness",
-        "Ergonomic Awareness"
-      ],
+      "id": "d_1782806721257",
+      "name": "Dr. Akshada Bhandare",
+      "title": "Junior Physiotherapist",
+      "gender": "Female",
+      "image": "assets/uploads/Dr_Akshada_Bhandare.jpg",
+      "bio": "Dr. Akshada Bhandare is a dedicated and compassionate physiotherapist with a Bachelor of Physiotherapy (BPTh). She has gained valuable clinical experience while working at Kelkar Hospital, where she was involved in the assessment and rehabilitation of patients with musculoskeletal and orthopedic conditions. She is committed to helping patients reduce pain, restore mobility, and improve their overall quality of life through evidence-based physiotherapy.",
+      "specialties": [],
       "facebook": "#",
       "instagram": "#",
       "linkedin": "#",
-      "category": "support"
+      "category": "medical"
     }
   ],
   "testimonies": [
@@ -196,23 +190,23 @@
       "title": "Our Advanced 4D Decompression Bed",
       "type": "image",
       "category": "facility",
-      "url": "assets/uploads/20260622_143217.jpg",
+      "url": "assets/uploads/Spinal_Decompression_Bed.jpg",
       "desc": "A look at our fully automatic spinal decompression bed, key to non-surgical spine treatment."
     },
     {
       "id": "g2",
-      "title": "Dry Needling Session",
+      "title": "Exercise Area",
       "type": "image",
-      "category": "treatment",
-      "url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80",
-      "desc": "Specialized dry needling treatment targeted at muscle trigger points."
+      "category": "facility",
+      "url": "assets/uploads/Exercise_Area.jpg",
+      "desc": "Our exercise area."
     },
     {
       "id": "g3",
       "title": "Clinic Interior",
       "type": "image",
       "category": "facility",
-      "url": "assets/uploads/20260622_143446.jpg",
+      "url": "assets/uploads/Reception.jpg",
       "desc": "Our clean, hygienic, and welcoming clinic environment."
     }
   ],
@@ -224,7 +218,7 @@
       "author": "Dr. Disha Viraj Ranade",
       "excerpt": "Learn how the latest 4D Automatic Spinal Decompression Bed works to relieve pressure from compressed spinal nerves and treat sciatica.",
       "content": "<p>Chronic lower back pain and sciatica are often caused by bulging or herniated discs that pinch sensitive spinal nerves. Traditionally, surgery was the primary option when conservative treatments failed. Today, advanced technologies like the <strong>4D Fully Automatic Spinal Decompression Bed</strong> offer a safe, pain-free alternative.</p><p>Spinal decompression works by gently stretching the spine. This creates a negative pressure (a vacuum effect) within the spinal discs, which helps pull the bulging or herniated disc material back into place. Additionally, this stretching increases blood flow, oxygen, and nutrient-rich fluids into the disc, accelerating natural healing.</p><p>Unlike old traction tables, our 4D Decompression Bed uses sensitive computer-guided sensors that detect muscle resistance. If your body tries to spasm, the table automatically adjusts, ensuring a comfortable and targeted treatment. Sessions typically take 20 to 30 minutes and require no recovery downtime. If you suffer from slip disc, chronic neck/back pain, or leg numbness, this treatment could help you avoid surgery.</p>",
-      "image": "assets/uploads/20260622_143208.jpg"
+      "image": "assets/uploads/Spinal_Decompression_Bed_2.jpg"
     },
     {
       "id": "b2",
@@ -260,23 +254,178 @@
     {
       "id": "faq5",
       "question": "What are the clinic timings, and how can I book an appointment?",
-      "answer": "We are open Monday to Saturday from 10:30 AM - 7:00 PM (Closed on Sundays). You can book a slot directly via our website WhatsApp contact form or by calling us at 7447862720."
+      "answer": "We are open Monday to Saturday from 10:00 AM - 7:00 PM (Closed on Sundays). You can book a slot directly via our website WhatsApp contact form or by calling us at 7447862720."
     }
   ],
   "conditions": {
-    "Head & Jaw": ["Headaches", "Neck-related headaches", "Migraine (neck-related management)", "Jaw pain (TMJ)", "Jaw clicking", "Difficulty opening the mouth", "Facial muscle pain"],
-    "Neck": ["Neck pain", "Stiff neck", "Cervical spondylosis", "Cervical disc problems", "Slipped disc in the neck", "Pinched nerve in the neck", "Cervical radiculopathy", "Flat neck (loss of cervical curve)", "Whiplash injury", "Tech neck / Text neck", "Poor posture"],
-    "Shoulder": ["Shoulder pain", "Frozen shoulder", "Rotator cuff injury", "Shoulder impingement", "Shoulder tendonitis", "Shoulder bursitis", "Shoulder instability", "Shoulder dislocation rehabilitation", "Labral injury rehabilitation", "Arthritis of the shoulder", "Collar bone injuries"],
-    "Elbow": ["Tennis elbow", "Golfer's elbow", "Elbow pain", "Elbow stiffness", "Ligament injuries", "Biceps tendon injury", "Triceps tendon injury"],
-    "Wrist & Hand": ["Wrist pain", "Carpal tunnel syndrome", "De Quervain's syndrome", "Trigger finger", "Thumb pain", "Arthritis of the hand", "Hand stiffness", "Finger injuries", "Wrist sprain", "Wrist tendonitis", "Hand fractures (rehabilitation)"],
-    "Upper Back & Chest": ["Upper back pain", "Mid-back pain", "Rounded shoulders", "Rib pain", "Costochondritis", "Muscle spasms", "Thoracic outlet syndrome"],
-    "Lower Back": ["Low back pain", "Slipped disc", "Disc bulge", "Sciatica", "Lumbar spondylosis", "Lumbar canal stenosis", "Facet joint pain", "Sacroiliac (SI) joint pain", "Tailbone pain (Coccydynia)", "Muscle strain", "Postural back pain", "Pregnancy-related back pain", "Post-surgical spine rehabilitation"],
-    "Hip": ["Hip pain", "Hip arthritis", "Hip bursitis", "Gluteal tendinopathy", "Piriformis syndrome", "Snapping hip", "Hip replacement rehabilitation", "Hip muscle weakness"],
-    "Knee": ["Knee pain", "Osteoarthritis", "ACL injury", "PCL injury", "MCL/LCL injury", "Meniscus tear", "Runner's knee", "Jumper's knee", "Patellar tendonitis", "Patellofemoral pain", "IT band syndrome", "Knee stiffness", "Total knee replacement rehabilitation"],
-    "Leg": ["Hamstring strain", "Quadriceps strain", "Calf strain", "Shin splints", "Muscle cramps", "Muscle tears"],
-    "Ankle": ["Ankle pain", "Ankle sprain", "Chronic ankle instability", "Achilles tendonitis", "Achilles tendon rupture rehabilitation", "Ankle stiffness", "Ankle arthritis"],
-    "Foot": ["Heel pain", "Plantar fasciitis", "Flat feet", "High arches", "Bunions", "Corns (pressure-related advice)", "Metatarsalgia", "Foot tendonitis", "Foot arthritis", "Toe injuries"],
-    "Sports Injuries": ["Muscle pulls", "Ligament sprains", "Tendon injuries", "Overuse injuries", "Running injuries", "Gym injuries", "Cricket injuries", "Football injuries", "Badminton injuries", "Return-to-sport rehabilitation"],
-    "General Orthopaedic": ["Arthritis", "Osteoarthritis", "Rheumatoid arthritis", "Osteoporosis", "Joint pain", "Muscle pain", "Tendon pain", "Ligament injuries", "Bursitis", "Tendinitis", "Myofascial pain", "Trigger points", "Repetitive strain injuries (RSI)", "Balance problems due to pain", "Post-fracture rehabilitation", "Post-operative rehabilitation", "Walking difficulties", "Mobility problems", "Age-related joint pain", "Workplace & ergonomic injuries"]
+    "Head & Jaw": [
+      "Headaches",
+      "Neck-related headaches",
+      "Migraine (neck-related management)",
+      "Jaw pain (TMJ)",
+      "Jaw clicking",
+      "Difficulty opening the mouth",
+      "Facial muscle pain"
+    ],
+    "Neck": [
+      "Neck pain",
+      "Stiff neck",
+      "Cervical spondylosis",
+      "Cervical disc problems",
+      "Slipped disc in the neck",
+      "Pinched nerve in the neck",
+      "Cervical radiculopathy",
+      "Flat neck (loss of cervical curve)",
+      "Whiplash injury",
+      "Tech neck / Text neck",
+      "Poor posture"
+    ],
+    "Shoulder": [
+      "Shoulder pain",
+      "Frozen shoulder",
+      "Rotator cuff injury",
+      "Shoulder impingement",
+      "Shoulder tendonitis",
+      "Shoulder bursitis",
+      "Shoulder instability",
+      "Shoulder dislocation rehabilitation",
+      "Labral injury rehabilitation",
+      "Arthritis of the shoulder",
+      "Collar bone injuries"
+    ],
+    "Elbow": [
+      "Tennis elbow",
+      "Golfer's elbow",
+      "Elbow pain",
+      "Elbow stiffness",
+      "Ligament injuries",
+      "Biceps tendon injury",
+      "Triceps tendon injury"
+    ],
+    "Wrist & Hand": [
+      "Wrist pain",
+      "Carpal tunnel syndrome",
+      "De Quervain's syndrome",
+      "Trigger finger",
+      "Thumb pain",
+      "Arthritis of the hand",
+      "Hand stiffness",
+      "Finger injuries",
+      "Wrist sprain",
+      "Wrist tendonitis",
+      "Hand fractures (rehabilitation)"
+    ],
+    "Upper Back & Chest": [
+      "Upper back pain",
+      "Mid-back pain",
+      "Rounded shoulders",
+      "Rib pain",
+      "Costochondritis",
+      "Muscle spasms",
+      "Thoracic outlet syndrome"
+    ],
+    "Lower Back": [
+      "Low back pain",
+      "Slipped disc",
+      "Disc bulge",
+      "Sciatica",
+      "Lumbar spondylosis",
+      "Lumbar canal stenosis",
+      "Facet joint pain",
+      "Sacroiliac (SI) joint pain",
+      "Tailbone pain (Coccydynia)",
+      "Muscle strain",
+      "Postural back pain",
+      "Pregnancy-related back pain",
+      "Post-surgical spine rehabilitation"
+    ],
+    "Hip": [
+      "Hip pain",
+      "Hip arthritis",
+      "Hip bursitis",
+      "Gluteal tendinopathy",
+      "Piriformis syndrome",
+      "Snapping hip",
+      "Hip replacement rehabilitation",
+      "Hip muscle weakness"
+    ],
+    "Knee": [
+      "Knee pain",
+      "Osteoarthritis",
+      "ACL injury",
+      "PCL injury",
+      "MCL/LCL injury",
+      "Meniscus tear",
+      "Runner's knee",
+      "Jumper's knee",
+      "Patellar tendonitis",
+      "Patellofemoral pain",
+      "IT band syndrome",
+      "Knee stiffness",
+      "Total knee replacement rehabilitation"
+    ],
+    "Leg": [
+      "Hamstring strain",
+      "Quadriceps strain",
+      "Calf strain",
+      "Shin splints",
+      "Muscle cramps",
+      "Muscle tears"
+    ],
+    "Ankle": [
+      "Ankle pain",
+      "Ankle sprain",
+      "Chronic ankle instability",
+      "Achilles tendonitis",
+      "Achilles tendon rupture rehabilitation",
+      "Ankle stiffness",
+      "Ankle arthritis"
+    ],
+    "Foot": [
+      "Heel pain",
+      "Plantar fasciitis",
+      "Flat feet",
+      "High arches",
+      "Bunions",
+      "Corns (pressure-related advice)",
+      "Metatarsalgia",
+      "Foot tendonitis",
+      "Foot arthritis",
+      "Toe injuries"
+    ],
+    "Sports Injuries": [
+      "Muscle pulls",
+      "Ligament sprains",
+      "Tendon injuries",
+      "Overuse injuries",
+      "Running injuries",
+      "Gym injuries",
+      "Cricket injuries",
+      "Football injuries",
+      "Badminton injuries",
+      "Return-to-sport rehabilitation"
+    ],
+    "General Orthopaedic": [
+      "Arthritis",
+      "Osteoarthritis",
+      "Rheumatoid arthritis",
+      "Osteoporosis",
+      "Joint pain",
+      "Muscle pain",
+      "Tendon pain",
+      "Ligament injuries",
+      "Bursitis",
+      "Tendinitis",
+      "Myofascial pain",
+      "Trigger points",
+      "Repetitive strain injuries (RSI)",
+      "Balance problems due to pain",
+      "Post-fracture rehabilitation",
+      "Post-operative rehabilitation",
+      "Walking difficulties",
+      "Mobility problems",
+      "Age-related joint pain",
+      "Workplace & ergonomic injuries"
+    ]
   }
 }
