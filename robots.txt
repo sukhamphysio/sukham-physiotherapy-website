@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /admin.html
-Disallow: /js/admin.js
-
-Sitemap: https://www.sukhamphysio.in/sitemap.xml
