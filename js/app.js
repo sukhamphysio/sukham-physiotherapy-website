@@ -273,6 +273,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const medicalTeam = doctors.filter(d => d.category === 'medical' || !d.category);
     const supportTeam = doctors.filter(d => d.category === 'support');
 
+    const supportSection = document.getElementById('support-staff-section');
+    if (supportSection) {
+      supportSection.style.display = supportTeam.length > 0 ? 'block' : 'none';
+    }
+
     if (grid) {
       medicalTeam.forEach((doctor, index) => {
         const card = document.createElement('div');

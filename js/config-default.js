@@ -135,7 +135,21 @@ const DEFAULT_CLINIC_DATA = {
       "facebook": "#",
       "instagram": "#",
       "linkedin": "#",
-      "category": "medical"
+      "category": "medical",
+      "credentials": [
+        {
+          "name": "Bachelor of Physiotherapy (BPTh)",
+          "source": "University Medical Degree Roster"
+        },
+        {
+          "name": "Registered Physiotherapist Member",
+          "source": "Indian Association of Physiotherapists (IAP)"
+        },
+        {
+          "name": "Certified Clinical Specialist",
+          "source": "Dry Needling (CDNT), Cupping (CMDCT), IASTM & Kinesio Taping"
+        }
+      ]
     },
     {
       "id": "d2",
