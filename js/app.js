@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="service-icon">${service.icon || '🩺'}</div>
         <h3 class="service-title">${service.title}</h3>
         <p class="service-desc">${service.desc}</p>
-        <a href="treatment.html?id=${slugify(service.title)}" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="treatment.html?id=${slugify(service.title)}" class="service-link">Learn More <span class="sr-only">about ${service.title}</span> <i class="fa-solid fa-arrow-right"></i></a>
       `;
       grid.appendChild(card);
     });
@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
               ${specBadges}
             </div>
             <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">
-              <a href="doctor.html?id=${slugify(doctor.name)}" class="btn btn-primary btn-sm" style="font-size: 12px; padding: 6px 12px;">View Profile</a>
+              <a href="doctor.html?id=${slugify(doctor.name)}" class="btn btn-primary btn-sm" style="font-size: 12px; padding: 6px 12px;">View Profile <span class="sr-only">for ${doctor.name}</span></a>
               <div class="social-links" style="margin: 0; display: flex; gap: 8px;">
                 ${(doctor.facebook && doctor.facebook !== '#') ? `<a href="${doctor.facebook}" target="_blank" aria-label="Facebook Profile for ${doctor.name}" class="social-icon" style="width:30px; height:30px; font-size:12px; margin:0;"><i class="fa-brands fa-facebook-f"></i></a>` : ''}
                 ${(doctor.instagram && doctor.instagram !== '#') ? `<a href="${doctor.instagram}" target="_blank" aria-label="Instagram Profile for ${doctor.name}" class="social-icon" style="width:30px; height:30px; font-size:12px; margin:0;"><i class="fa-brands fa-instagram"></i></a>` : ''}
