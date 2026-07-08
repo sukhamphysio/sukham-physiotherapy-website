@@ -330,8 +330,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">
               <a href="doctor.html?id=${slugify(doctor.name)}" class="btn btn-primary btn-sm" style="font-size: 12px; padding: 6px 12px;">View Profile</a>
               <div class="social-links" style="margin: 0; display: flex; gap: 8px;">
-                ${(doctor.facebook && doctor.facebook !== '#') ? `<a href="${doctor.facebook}" target="_blank" class="social-icon" style="width:30px; height:30px; font-size:12px; margin:0;"><i class="fa-brands fa-facebook-f"></i></a>` : ''}
-                ${(doctor.instagram && doctor.instagram !== '#') ? `<a href="${doctor.instagram}" target="_blank" class="social-icon" style="width:30px; height:30px; font-size:12px; margin:0;"><i class="fa-brands fa-instagram"></i></a>` : ''}
+                ${(doctor.facebook && doctor.facebook !== '#') ? `<a href="${doctor.facebook}" target="_blank" aria-label="Facebook Profile for ${doctor.name}" class="social-icon" style="width:30px; height:30px; font-size:12px; margin:0;"><i class="fa-brands fa-facebook-f"></i></a>` : ''}
+                ${(doctor.instagram && doctor.instagram !== '#') ? `<a href="${doctor.instagram}" target="_blank" aria-label="Instagram Profile for ${doctor.name}" class="social-icon" style="width:30px; height:30px; font-size:12px; margin:0;"><i class="fa-brands fa-instagram"></i></a>` : ''}
               </div>
             </div>
           </div>

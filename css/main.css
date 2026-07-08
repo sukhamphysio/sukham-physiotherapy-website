@@ -132,7 +132,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-accent {
   background-color: var(--accent-color);
-  color: var(--text-inverse);
+  color: #0d0b10; /* Accessibility fix: Dark text on bright turquoise background */
   box-shadow: 0 10px 20px -5px rgba(var(--accent-rgb), 0.3);
 }
 
