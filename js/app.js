@@ -20,16 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cached) {
       return cached.originalUrl;
     }
-    // Fallback to GitHub raw CDN only if we are in admin or preview mode to see freshly uploaded assets
+    // Fallback to GitHub raw CDN if it's an uploaded asset and we don't have it in local cache
     if (url.startsWith('assets/uploads/')) {
-      const isAdmin = window.location.pathname.includes('admin.html') || window.name === 'preview-iframe';
-      if (isAdmin) {
-        const user = localStorage.getItem('sukham_gh_user') || (clinicData && clinicData.clinicInfo && clinicData.clinicInfo.githubUser);
-        const repo = localStorage.getItem('sukham_gh_repo') || (clinicData && clinicData.clinicInfo && clinicData.clinicInfo.githubRepo);
-        const branch = localStorage.getItem('sukham_gh_branch') || 'main';
-        if (user && repo) {
-          return `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${url}`;
-        }
+      const user = localStorage.getItem('sukham_gh_user') || (clinicData && clinicData.clinicInfo && clinicData.clinicInfo.githubUser);
+      const repo = localStorage.getItem('sukham_gh_repo') || (clinicData && clinicData.clinicInfo && clinicData.clinicInfo.githubRepo);
+      const branch = localStorage.getItem('sukham_gh_branch') || 'main';
+      if (user && repo) {
+        return `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${url}`;
       }
     }
     return url;
@@ -411,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
               ${initial}
             </div>
             <div class="google-review-user-info">
-              <h3 class="google-review-name">${test.name}</h3>
+              <h4 class="google-review-name">${test.name}</h4>
               <div class="google-review-meta">
                 <span class="google-review-badge"><i class="fa-brands fa-google"></i> Verified Google Review</span>
                 ${test.date ? `<span class="google-review-date">• ${test.date}</span>` : ''}
@@ -458,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ${mediaTag}
         <div class="gallery-item-overlay">
           <div class="gallery-item-icon"><i class="fa-solid ${typeIcon}"></i></div>
-          <h3 class="gallery-item-title">${item.title}</h3>
+          <h4 class="gallery-item-title">${item.title}</h4>
           <span class="gallery-item-type">${typeText}</span>
         </div>
       `;
@@ -488,7 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <h3 class="blog-title">${blog.title}</h3>
           <p class="blog-excerpt">${blog.excerpt}</p>
-          <a href="blog.html?id=${blog.id}" class="blog-read-btn" style="text-align: center; justify-content: center; display: inline-flex;">Read Post <span class="sr-only">about ${blog.title}</span> <i class="fa-solid fa-angle-right"></i></a>
+          <a href="blog.html?id=${blog.id}" class="blog-read-btn" style="text-align: center; justify-content: center; display: inline-flex;">Read Post <i class="fa-solid fa-angle-right"></i></a>
         </div>
       `;
       grid.appendChild(card);
