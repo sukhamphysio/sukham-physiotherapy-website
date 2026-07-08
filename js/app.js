@@ -332,6 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="social-links" style="margin: 0; display: flex; gap: 8px;">
                 ${(doctor.facebook && doctor.facebook !== '#') ? `<a href="${doctor.facebook}" target="_blank" aria-label="Facebook Profile for ${doctor.name}" class="social-icon" style="width:30px; height:30px; font-size:12px; margin:0;"><i class="fa-brands fa-facebook-f"></i></a>` : ''}
                 ${(doctor.instagram && doctor.instagram !== '#') ? `<a href="${doctor.instagram}" target="_blank" aria-label="Instagram Profile for ${doctor.name}" class="social-icon" style="width:30px; height:30px; font-size:12px; margin:0;"><i class="fa-brands fa-instagram"></i></a>` : ''}
+                ${(doctor.linkedin && doctor.linkedin !== '#') ? `<a href="${doctor.linkedin}" target="_blank" aria-label="LinkedIn Profile for ${doctor.name}" class="social-icon" style="width:30px; height:30px; font-size:12px; margin:0;"><i class="fa-brands fa-linkedin-in"></i></a>` : ''}
               </div>
             </div>
           </div>
@@ -356,9 +357,10 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div class="doctor-details">
             <p class="doctor-bio">${doctor.bio}</p>
-            <div class="social-links" style="margin-top: 15px; display: ${(doctor.facebook && doctor.facebook !== '#') || (doctor.instagram && doctor.instagram !== '#') ? 'flex' : 'none'}; gap: 8px;">
+            <div class="social-links" style="margin-top: 15px; display: ${(doctor.facebook && doctor.facebook !== '#') || (doctor.instagram && doctor.instagram !== '#') || (doctor.linkedin && doctor.linkedin !== '#') ? 'flex' : 'none'}; gap: 8px;">
               ${(doctor.facebook && doctor.facebook !== '#') ? `<a href="${doctor.facebook}" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>` : ''}
               ${(doctor.instagram && doctor.instagram !== '#') ? `<a href="${doctor.instagram}" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>` : ''}
+              ${(doctor.linkedin && doctor.linkedin !== '#') ? `<a href="${doctor.linkedin}" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>` : ''}
             </div>
           </div>
         `;

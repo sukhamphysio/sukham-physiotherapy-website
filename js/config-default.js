@@ -12,7 +12,9 @@ const DEFAULT_CLINIC_DATA = {
     "logoUrl": "assets/logo.jpg",
     "githubUser": "",
     "githubRepo": "",
-    "githubToken": ""
+    "githubToken": "",
+    "instagram": "https://www.instagram.com/sukham_physio/",
+    "linkedin": "https://www.linkedin.com/in/dr-disha-ranade/"
   },
   "theme": {
     "primaryColor": "#5D2B7E",
@@ -34,7 +36,7 @@ const DEFAULT_CLINIC_DATA = {
   "hero": {
     "badgeText": "Welcome to Sukham Physiotherapy",
     "title": "Restore Your <span>Movement</span> & Reclaim Your Life",
-    "description": "Expert physiotherapy care led by Dr. Disha Viraj Ranade. We specialize in spine rehabilitation, sports injuries, post-operative care, and prenatal/postnatal wellness in a state-of-the-art clinic.",
+    "description": "Expert physiotherapy care led by Dr. Disha Ranade. We specialize in spine rehabilitation, sports injuries, post-operative care, and prenatal/postnatal wellness in a state-of-the-art clinic.",
     "ctaText": "Book Appointment",
     "slides": [
       "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
@@ -126,15 +128,15 @@ const DEFAULT_CLINIC_DATA = {
   "doctors": [
     {
       "id": "d1",
-      "name": "Dr. Disha Viraj Ranade",
+      "name": "Dr. Disha Ranade",
       "title": "Founder & Chief Physiotherapist",
       "gender": "Female",
-      "bio": "Dr. Disha Viraj Ranade (PT), BPTh, is the Chief Physiotherapist & Founder of Sukham Physiotherapy and Rehab. She is a registered member of the Indian Association of Physiotherapists (IAP Reg No. 71561) with senior clinical experience at Kelkar Orthopaedic Hospital, Nashik. She specializes in spine decompression, post-operative care, musculoskeletal (MSK) rehab, and home visits. She is a highly certified specialist in Pre/Post-Natal Fitness, Cupping (CMDCT), Dry Needling (CDNT), Kinesio Taping (CKTT), and IASTM.",
+      "bio": "Dr. Disha Ranade, BPTh, is the Chief Physiotherapist & Founder of Sukham Physiotherapy and Rehab. She is a registered member of the Indian Association of Physiotherapists (IAP Reg No. 71561) with senior clinical experience at Kelkar Orthopaedic Hospital, Nashik. She specializes in spine decompression, post-operative care, musculoskeletal (MSK) rehab, and home visits. She is a highly certified specialist in Pre/Post-Natal Fitness, Cupping (CMDCT), Dry Needling (CDNT), Kinesio Taping (CKTT), and IASTM.",
       "image": "assets/logo.jpg",
       "specialties": ["MSK", "Spine Rehabilitation", "Prenatal / Postnatal Care", "Dry Needling", "IASTM"],
       "facebook": "#",
-      "instagram": "#",
-      "linkedin": "#",
+      "instagram": "https://www.instagram.com/sukham_physio/",
+      "linkedin": "https://www.linkedin.com/in/dr-disha-ranade/",
       "category": "medical",
       "credentials": [
         {
@@ -222,7 +224,7 @@ const DEFAULT_CLINIC_DATA = {
       "id": "b1",
       "title": "Understanding Spinal Decompression: A Non-Surgical Cure for Back Pain",
       "date": "June 10, 2026",
-      "author": "Dr. Disha Viraj Ranade",
+      "author": "Dr. Disha Ranade",
       "excerpt": "Learn how the latest 4D Automatic Spinal Decompression Bed works to relieve pressure from compressed spinal nerves and treat sciatica.",
       "content": "<p>Chronic lower back pain and sciatica are often caused by bulging or herniated discs that pinch sensitive spinal nerves. Traditionally, surgery was the primary option when conservative treatments failed. Today, advanced technologies like the <strong>4D Fully Automatic Spinal Decompression Bed</strong> offer a safe, pain-free alternative.</p><p>Spinal decompression works by gently stretching the spine. This creates a negative pressure (a vacuum effect) within the spinal discs, which helps pull the bulging or herniated disc material back into place. Additionally, this stretching increases blood flow, oxygen, and nutrient-rich fluids into the disc, accelerating natural healing.</p><p>Unlike old traction tables, our 4D Decompression Bed uses sensitive computer-guided sensors that detect muscle resistance. If your body tries to spasm, the table automatically adjusts, ensuring a comfortable and targeted treatment. Sessions typically take 20 to 30 minutes and require no recovery downtime. If you suffer from slip disc, chronic neck/back pain, or leg numbness, this treatment could help you avoid surgery.</p>",
       "image": "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=600&q=80"
@@ -231,7 +233,7 @@ const DEFAULT_CLINIC_DATA = {
       "id": "b2",
       "title": "Rehabilitation After Joint Replacement: Why Early Physiotherapy is Key",
       "date": "June 14, 2026",
-      "author": "Dr. Disha Viraj Ranade",
+      "author": "Dr. Disha Ranade",
       "excerpt": "Undergoing Total Knee or Hip Replacement? Discover why starting structured physiotherapy within 24 hours of surgery guarantees recovery.",
       "content": "<p>Getting a Total Knee Replacement (TKR) or Total Hip Replacement (THR) is a major step toward restoring pain-free mobility. However, the surgery itself is only half the battle. The ultimate success of joint replacement depends heavily on post-operative physiotherapy.</p><p>Many patients believe they should rest for weeks after surgery. In reality, modern medical guidelines advise starting gentle movement within the first 24 hours! Early mobilization prevents stiffness, reduces swelling, increases blood circulation (preventing dangerous blood clots), and helps retrain muscles surrounding the new joint.</p><p>At Sukham, we design customized progressive exercises. In the early stages, we focus on pain relief, gentle range of motion, and weight-bearing tasks. Later, we introduce advanced conditioning using weight training units like the Rising Yeti. This structured approach helps patients walk independently and resume daily life weeks ahead of schedule.</p>",
       "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80"
@@ -241,7 +243,7 @@ const DEFAULT_CLINIC_DATA = {
     {
       "id": "faq1",
       "question": "Who is the chief physiotherapist at Sukham Physiotherapy and Rehab?",
-      "answer": "The clinic is founded and led by Dr. Disha Viraj Ranade, a highly certified BPTh physiotherapist and registered member of the Indian Association of Physiotherapists (IAP Reg No. 71561), with extensive clinical experience at Kelkar Orthopaedic Hospital."
+      "answer": "The clinic is founded and led by Dr. Disha Ranade (also known as Dr. Disha Viraj Ranade, Dr. Disha Viraj Ranade (PT), Dr. Disha Ranade (PT) & Disha Ranade), a highly certified BPTh physiotherapist and registered member of the Indian Association of Physiotherapists (IAP Reg No. 71561), with extensive clinical experience at Kelkar Orthopaedic Hospital."
     },
     {
       "id": "faq2",
