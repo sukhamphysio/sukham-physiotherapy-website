@@ -70,10 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (isPassword) {
         toggleIcon.className = 'fa-solid fa-eye';
-        passcodeField.style.letterSpacing = '2px';
       } else {
         toggleIcon.className = 'fa-solid fa-eye-slash';
-        passcodeField.style.letterSpacing = '12px';
       }
     });
   }
