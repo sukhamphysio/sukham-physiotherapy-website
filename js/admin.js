@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Hashed allowed passcodes (prevent plain text exposure on public repo)
     const allowedHashes = [
-      '7434e8444510b32ce5ead6f8528ddd53171192921a0fa53cf9ce80113a0df5da'  // Sukham@6009
+      '023174327cc2171f434efef28de779ddf6ad54987c4dc6cc95df0e42cf35f4d6'
     ];
 
     if (allowedHashes.includes(enteredHash)) {
