@@ -476,8 +476,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = 'blog-card reveal';
       card.style.transitionDelay = `${index * 0.1}s`;
+      
+      const catText = blog.category || 'Clinical Guide';
+      const isRecovery = catText.toLowerCase().includes('recovery') || catText.toLowerCase().includes('patient');
+      const badgeClass = isRecovery ? 'blog-badge recovery-story' : 'blog-badge';
+
       card.innerHTML = `
         <div class="blog-img-wrapper">
+          <span class="${badgeClass}">${catText}</span>
           <img src="${getLocalUrl(blog.image || 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80')}" alt="${blog.title}" class="blog-img" loading="lazy">
         </div>
         <div class="blog-content">
