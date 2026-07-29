@@ -137,7 +137,13 @@
 
       <div class="blogs-search-wrapper">
         <i class="fa-solid fa-magnifying-glass blogs-search-icon"></i>
-        <input type="text" id="blog-search" class="blogs-search-input" placeholder="Search articles by keywords or symptoms...">
+        <input type="text" id="blog-search" class="blogs-search-input" placeholder="Search articles by keywords, symptoms, or patient stories...">
+      </div>
+
+      <div class="gallery-filters" id="blog-category-filters" style="margin-bottom: 40px;">
+        <button class="gallery-filter-btn active" data-category="all">All Publications</button>
+        <button class="gallery-filter-btn" data-category="Patient Recovery Story"><i class="fa-solid fa-heart-pulse"></i> Patient Recovery Stories</button>
+        <button class="gallery-filter-btn" data-category="Clinical Guide"><i class="fa-solid fa-book-medical"></i> Clinical Guides</button>
       </div>
 
       <div class="blogs-directory-grid" id="blogs-list-container">
@@ -239,6 +245,8 @@
         return url;
       }
 
+      let activeCategory = 'all';
+
       // Render Blog Cards
       function renderBlogCards(items) {
         if (items.length === 0) {
@@ -251,9 +259,15 @@
           return;
         }
 
-        listContainer.innerHTML = items.map((blog, index) => `
+        listContainer.innerHTML = items.map((blog, index) => {
+          const catText = blog.category || 'Clinical Guide';
+          const isRecovery = catText.toLowerCase().includes('recovery') || catText.toLowerCase().includes('patient');
+          const badgeClass = isRecovery ? 'blog-badge recovery-story' : 'blog-badge';
+
+          return `
           <div class="blog-card reveal active">
             <div class="blog-img-wrapper">
+              <span class="${badgeClass}">${catText}</span>
               <img src="${getLocalUrl(blog.image)}" alt="${blog.title}" class="blog-img" loading="lazy">
             </div>
             <div class="blog-content">
@@ -266,27 +280,47 @@
               <a href="blog.html?id=${slugify(blog.title)}" class="blog-read-btn" style="text-align: center; justify-content: center; display: inline-flex;">Read Post <i class="fa-solid fa-angle-right"></i></a>
             </div>
           </div>
-        `).join('');
+        `;
+        }).join('');
+      }
+
+      function filterAndRender() {
+        const query = document.getElementById('blog-search').value.toLowerCase().trim();
+        
+        let filtered = blogs;
+
+        if (activeCategory !== 'all') {
+          filtered = filtered.filter(blog => (blog.category || 'Clinical Guide').toLowerCase() === activeCategory.toLowerCase());
+        }
+
+        if (query) {
+          filtered = filtered.filter(blog => 
+            blog.title.toLowerCase().includes(query) || 
+            blog.excerpt.toLowerCase().includes(query) ||
+            blog.content.toLowerCase().includes(query) ||
+            (blog.category && blog.category.toLowerCase().includes(query))
+          );
+        }
+
+        renderBlogCards(filtered);
       }
 
       renderBlogCards(blogs);
 
+      // Wire Category Filter Buttons
+      const filterBtns = document.querySelectorAll('#blog-category-filters .gallery-filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeCategory = btn.getAttribute('data-category');
+          filterAndRender();
+        });
+      });
+
       // Wire Search Filter Input
       const searchInput = document.getElementById('blog-search');
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
-        if (!query) {
-          renderBlogCards(blogs);
-          return;
-        }
-
-        const filtered = blogs.filter(blog => 
-          blog.title.toLowerCase().includes(query) || 
-          blog.excerpt.toLowerCase().includes(query) ||
-          blog.content.toLowerCase().includes(query)
-        );
-        renderBlogCards(filtered);
-      });
+      searchInput.addEventListener('input', filterAndRender);
 
       // Populate global clinic footer socials dynamically
       if (state.clinicInfo) {
