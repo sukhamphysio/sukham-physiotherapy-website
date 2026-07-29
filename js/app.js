@@ -493,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <h3 class="blog-title">${blog.title}</h3>
           <p class="blog-excerpt">${blog.excerpt}</p>
-          <a href="blog.html?id=${blog.id}" class="blog-read-btn" style="text-align: center; justify-content: center; display: inline-flex;">Read Post <i class="fa-solid fa-angle-right"></i></a>
+          <a href="blog.html?id=${slugify(blog.title)}" class="blog-read-btn" style="text-align: center; justify-content: center; display: inline-flex;">Read Post <i class="fa-solid fa-angle-right"></i></a>
         </div>
       `;
       grid.appendChild(card);
