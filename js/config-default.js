@@ -8,6 +8,7 @@ const DEFAULT_CLINIC_DATA = {
     "address": "Shop no. 238/239, 2nd floor, D-Wing, Thakkers M Square, Near Akashwani Tower, Gangapur Road, Purnvad Nagar, Nashik - 422013",
     "workingHours": "Mon - Sat: 9:00 AM - 1:00 PM, 5:00 PM - 9:00 PM | Sunday: Closed",
     "mapEmbed": "https://maps.google.com/maps?q=2nd%20Floor,%20Sukham%20Physiotherapy%20%26%20Rehab%20%7C%20Dr.Disha%20Ranade%20(PT),%20Gangapur%20Road,%20Nashik&t=&z=16&ie=UTF8&iwloc=&output=embed",
+    "googleBusinessLink": "https://maps.app.goo.gl/MuYT2QTzaTqWWkDu9",
     "whatsappText": "Hello Sukham Physiotherapy, I would like to book an appointment.",
     "logoUrl": "assets/logo.jpg",
     "githubUser": "",
